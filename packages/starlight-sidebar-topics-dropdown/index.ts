@@ -1,21 +1,82 @@
-import type { StarlightPlugin } from '@astrojs/starlight/types'
+import type { StarlightPlugin, StarlightUserConfig } from "@astrojs/starlight/types";
 
-export default function starlightSidebarTopicsDropdown(): StarlightPlugin {
-  return {
-    name: 'starlight-sidebar-topics-dropdown',
-    hooks: {
-      setup({ logger }) {
-        /**
-         * This is the entry point of your Starlight plugin.
-         * The `setup` hook is called when Starlight is initialized (during the Astro `astro:config:setup` integration
-         * hook).
-         * To learn more about the Starlight plugin API and all available options in this hook, check the Starlight
-         * plugins reference.
-         *
-         * @see https://starlight.astro.build/reference/plugins/
-         */
-        logger.info('Hello from the starlight-sidebar-topics-dropdown plugin!')
-      },
-    },
-  }
+import {
+    StarlightSidebarTopicsDropdownConfigSchema,
+    type StarlightSidebarTopicsDropdownUserConfig,
+} from "./lib/config";
+import { overrideStarlightComponent, throwPluginError } from "./lib/plugin";
+import { vitePluginStarlightSidebarTopicsDropdown } from "./lib/vite";
+
+export type {
+    StarlightSidebarTopicsDropdownConfig,
+    StarlightSidebarTopicsDropdownUserConfig,
+} from "./lib/config";
+
+export default function starlightSidebarTopicsDropdownPlugin(
+    userConfig: StarlightSidebarTopicsDropdownUserConfig
+): StarlightPlugin {
+    const parsedConfig = StarlightSidebarTopicsDropdownConfigSchema.safeParse(userConfig);
+
+    if (!parsedConfig.success) {
+        throwPluginError(
+            `The provided plugin configuration is invalid.\n${parsedConfig.error.issues
+                .map((issue) => issue.message)
+                .join("\n")}`
+        );
+    }
+
+    const config = parsedConfig.data;
+
+    return {
+        name: "starlight-sidebar-topics-dropdown-plugin",
+        hooks: {
+            setup({ addIntegration, command, config: starlightConfig, logger, updateConfig }) {
+                if (command !== "dev" && command !== "build") return;
+
+                if (starlightConfig.sidebar) {
+                    throwPluginError(
+                        "It looks like you have a `sidebar` configured in your Starlight configuration. To use `starlight-sidebar-topics-dropdown`, create a new topic with your sidebar items.",
+                        "Learn more about topic configuration at https://starlight-sidebar-topics-dropdown.netlify.app/docs/configuration/"
+                    );
+                }
+
+                const sidebar: StarlightUserConfig["sidebar"] = [];
+
+                for (const [index, topic] of config.entries()) {
+                    if ("items" in topic) {
+                        sidebar.push({ label: String(index), items: topic.items });
+                    }
+                }
+                updateConfig({
+                    components: {
+                        ...starlightConfig.components,
+                        ...overrideStarlightComponent(
+                            starlightConfig.components,
+                            logger,
+                            "Sidebar"
+                        ),
+                        ...overrideStarlightComponent(
+                            starlightConfig.components,
+                            logger,
+                            "Pagination"
+                        ),
+                    },
+                    sidebar,
+                });
+
+                addIntegration({
+                    name: "starlight-sidebar-topics-dropdown-integration",
+                    hooks: {
+                        "astro:config:setup": ({ updateConfig }) => {
+                            updateConfig({
+                                vite: {
+                                    plugins: [vitePluginStarlightSidebarTopicsDropdown(config)],
+                                },
+                            });
+                        },
+                    },
+                });
+            },
+        },
+    };
 }

@@ -1,31 +1,34 @@
 {
-  "name": "starlight-sidebar-topics-dropdown",
-  "version": "0.0.1",
-  "license": "MIT",
-  "description": "Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.",
-  "author": "trueberryless-org",
-  "type": "module",
-  "exports": {
-    ".": "./index.ts"
-  },
-  "devDependencies": {
-    "@astrojs/starlight": "^0.28.3",
-    "astro": "^4.16.6"
-  },
-  "peerDependencies": {
-    "@astrojs/starlight": ">=0.28"
-  },
-  "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
-    "directory": "packages/starlight-sidebar-topics-dropdown"
-  },
-  "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+    "name": "starlight-sidebar-topics-dropdown",
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.",
+    "author": "trueberryless-org",
+    "type": "module",
+    "exports": {
+        ".": "./index.ts",
+        "./overrides/Pagination.astro": "./overrides/Pagination.astro",
+        "./overrides/Sidebar.astro": "./overrides/Sidebar.astro",
+        "./package.json": "./package.json"
+    },
+    "devDependencies": {
+        "@astrojs/starlight": "^0.28.3",
+        "astro": "^4.16.6"
+    },
+    "peerDependencies": {
+        "@astrojs/starlight": ">=0.28"
+    },
+    "engines": {
+        "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
+        "directory": "packages/starlight-sidebar-topics-dropdown"
+    },
+    "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
 }

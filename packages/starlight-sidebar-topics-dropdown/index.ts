@@ -30,7 +30,14 @@ export default function starlightSidebarTopicsDropdownPlugin(
     return {
         name: "starlight-sidebar-topics-dropdown-plugin",
         hooks: {
-            setup({ addIntegration, command, config: starlightConfig, logger, updateConfig }) {
+            async setup({
+                addIntegration,
+                command,
+                config: starlightConfig,
+                logger,
+                updateConfig,
+                astroConfig,
+            }) {
                 if (command !== "dev" && command !== "build") return;
 
                 if (starlightConfig.sidebar) {
@@ -76,6 +83,15 @@ export default function starlightSidebarTopicsDropdownPlugin(
                         },
                     },
                 });
+
+                const isReactLoaded = astroConfig.integrations.find(
+                    ({ name }) => name === "@astrojs/react"
+                );
+
+                if (!isReactLoaded) {
+                    const react = await import("@astrojs/react");
+                    addIntegration(react.default());
+                }
             },
         },
     };

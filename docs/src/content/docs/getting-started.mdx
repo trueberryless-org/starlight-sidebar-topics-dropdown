@@ -1,0 +1,68 @@
+---
+title: Getting Started
+---
+
+Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.
+
+## Prerequisites
+
+You will need to have a Starlight website set up.
+If you don't have one yet, you can follow the ["Getting Started"](https://starlight.astro.build/getting-started) guide in the Starlight docs to create one.
+
+## Installation
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components'
+
+<Steps>
+
+1. `starlight-sidebar-topics-dropdown` is a Starlight [plugin](https://starlight.astro.build/reference/plugins/). Install it by running the following command in your terminal:
+
+   <Tabs syncKey="pkg">
+
+   <TabItem label="npm">
+
+   ```sh
+   npm install starlight-sidebar-topics-dropdown
+   ```
+
+   </TabItem>
+
+   <TabItem label="pnpm">
+
+   ```sh
+   pnpm add starlight-sidebar-topics-dropdown
+   ```
+
+   </TabItem>
+
+   <TabItem label="Yarn">
+
+   ```sh
+   yarn add starlight-sidebar-topics-dropdown
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file.
+
+   ```diff lang="js"
+   // astro.config.mjs
+   import starlight from '@astrojs/starlight'
+   import { defineConfig } from 'astro/config'
+   +import starlightSidebarTopicsDropdown from 'starlight-sidebar-topics-dropdown'
+
+   export default defineConfig({
+     integrations: [
+       starlight({
+   +      plugins: [starlightSidebarTopicsDropdown()],
+         title: 'My Docs',
+       }),
+     ],
+   })
+   ```
+
+3. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to preview the plugin in action.
+
+</Steps>

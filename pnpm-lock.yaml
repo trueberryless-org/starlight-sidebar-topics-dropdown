@@ -10,18 +10,39 @@ importers:
 
   docs:
     dependencies:
+      '@astrojs/react':
+        specifier: ^3.6.2
+        version: 3.6.2(@types/react-dom@18.3.1)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.9)
       '@astrojs/starlight':
         specifier: ^0.28.3
         version: 0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+      '@astrojs/tailwind':
+        specifier: ^5.1.2
+        version: 5.1.2(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))(tailwindcss@3.4.14)
+      '@types/react':
+        specifier: ^18.3.11
+        version: 18.3.11
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
       astro:
         specifier: ^4.16.6
         version: 4.16.6(rollup@4.24.0)(typescript@5.6.3)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
       starlight-sidebar-topics-dropdown:
         specifier: workspace:*
         version: link:../packages/starlight-sidebar-topics-dropdown
+      tailwindcss:
+        specifier: ^3.4.14
+        version: 3.4.14
 
   packages/starlight-sidebar-topics-dropdown:
     dependencies:

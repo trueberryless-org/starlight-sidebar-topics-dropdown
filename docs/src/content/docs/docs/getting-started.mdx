@@ -19,60 +19,85 @@ If you don't have one yet, you can follow the ["Getting Started"](https://starli
 
 ## Installation
 
-import { Steps } from '@astrojs/starlight/components'
-import { PackageManagers } from '@hideoo/starlight-plugins-docs-components'
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 
 <Steps>
 
 1. Starlight Multiple Sidebar Dropdown is a Starlight [plugin](https://starlight.astro.build/reference/plugins/). Install it using your favorite package manager:
 
-   <PackageManagers pkg="starlight-multiple-sidebar-dropdown" />
+    <Tabs syncKey="pkg">
+
+    <TabItem label="npm">
+
+    ```sh
+    npm install starlight-sidebar-topics-dropdown
+    ```
+
+    </TabItem>
+
+    <TabItem label="pnpm">
+
+    ```sh
+    pnpm add starlight-sidebar-topics-dropdown
+    ```
+
+    </TabItem>
+
+    <TabItem label="Yarn">
+
+    ```sh
+    yarn add starlight-sidebar-topics-dropdown
+    ```
+
+    </TabItem>
+
+    </Tabs>
 
 2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file by specifying an array of topics each with its own sidebar configuration.
 
-   The following example shows how to configure two new topics named "Guides" and "Reference" linking to the `/guides/` and `/reference/` pages respectively with their own sidebar configuration:
+    The following example shows how to configure two new topics named "Guides" and "Reference" linking to the `/guides/` and `/reference/` pages respectively with their own sidebar configuration:
 
-   ```diff lang="js"
-   // astro.config.mjs
-   // @ts-check
-   import starlight from '@astrojs/starlight'
-   import { defineConfig } from 'astro/config'
-   +import starlightMultipleSidebarDropdown from 'starlight-multiple-sidebar-dropdown'
+    ```diff lang="js"
+    // astro.config.mjs
+    // @ts-check
+    import starlight from '@astrojs/starlight'
+    import { defineConfig } from 'astro/config'
+    +import starlightMultipleSidebarDropdown from 'starlight-multiple-sidebar-dropdown'
 
-   export default defineConfig({
-     integrations: [
-       starlight({
-   +      plugins: [
-   +        starlightMultipleSidebarDropdown([
-   +          {
-   +            label: 'Guides',
-   +            link: '/guides/',
-   +            icon: 'open-book',
-   +            items: ['guides/getting-started', 'guides/manual-setup'],
-   +          },
-   +          {
-   +            label: 'Reference',
-   +            link: '/reference/',
-   +            icon: 'information',
-   +            items: ['reference/api', 'reference/components'],
-   +          },
-   +        ]),
-   +      ],
-   -      sidebar: [
-   -        {
-   -          label: 'Guides',
-   -          items: ['guides/getting-started', 'guides/manual-setup'],
-   -        },
-   -        {
-   -          label: 'Reference',
-   -          items: ['reference/api', 'reference/components'],
-   -        },
-   -      ],
-         title: 'My Docs',
-       }),
-     ],
-   })
-   ```
+    export default defineConfig({
+      integrations: [
+        starlight({
+    +      plugins: [
+    +        starlightMultipleSidebarDropdown([
+    +          {
+    +            label: 'Guides',
+    +            link: '/guides/',
+    +            icon: 'open-book',
+    +            items: ['guides/getting-started', 'guides/manual-setup'],
+    +          },
+    +          {
+    +            label: 'Reference',
+    +            link: '/reference/',
+    +            icon: 'information',
+    +            items: ['reference/api', 'reference/components'],
+    +          },
+    +        ]),
+    +      ],
+    -      sidebar: [
+    -        {
+    -          label: 'Guides',
+    -          items: ['guides/getting-started', 'guides/manual-setup'],
+    -        },
+    -        {
+    -          label: 'Reference',
+    -          items: ['reference/api', 'reference/components'],
+    -        },
+    -      ],
+          title: 'My Docs',
+        }),
+      ],
+    })
+    ```
 
 3. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to preview the changes.
 

@@ -13,10 +13,17 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^3.6.2",
     "@astrojs/starlight": "^0.28.3",
+    "@astrojs/tailwind": "^5.1.2",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
     "astro": "^4.16.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sharp": "^0.33.5",
-    "starlight-sidebar-topics-dropdown": "workspace:*"
+    "starlight-sidebar-topics-dropdown": "workspace:*",
+    "tailwindcss": "^3.4.14"
   },
   "engines": {
     "node": "^18.17.1 || ^20.3.0 || >=21.0.0"

@@ -1,6 +1,9 @@
 ---
 import '../styles/globals.css';
 
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
+import { cn } from '../lib/utils'
+
 import { Badge, Icon } from '@astrojs/starlight/components'
 import { AstroError } from 'astro/errors'
 import type { ComponentProps } from 'astro/types'
@@ -76,6 +79,79 @@ function getTranslation(translations: Record<string, string>, link: string, desc
     })
   }
 </ul>
+
+<!-- value={current.label.toString()}
+  onValueChange={(value: string | Record<string, string>) => {
+    const selectedTopic = config.find((topic) => topic.label === value)
+    if (selectedTopic) {
+      window.location.href = selectedTopic.link
+    }
+  }} -->
+
+<!-- <Select>
+  <SelectTrigger
+    className={cn(
+      'flex items-center gap-2 [&>span]:line-clamp-1 [&>span]:flex [&>span]:w-full [&>span]:items-center [&>span]:gap-1 [&>span]:truncate [&_svg]:h-4 [&_svg]:w-4 [&_svg]:shrink-0',
+      false && 'flex h-9 w-9 shrink-0 items-center justify-center p-0 [&>span]:w-auto [&>svg]:hidden',
+    )}
+    aria-label="Select topic"
+  >
+    <SelectValue placeholder="Select a topic">
+      {current.icon && <Icon name={current.icon as ComponentProps<typeof Icon>['name']} />}
+      <span className={cn('ml-2', false && 'hidden')}>
+        {current.label}
+        {
+          current.badge && (
+            <Badge
+              class="starlight-multiple-sidebar-dropdown-badge"
+              text={
+                typeof current.badge.text === 'string'
+                  ? current.badge.text
+                  : getTranslation(current.badge.text, current.link, 'topic badge text')
+              }
+              variant={current.badge.variant}
+            />
+          )
+        }
+      </span>
+    </SelectValue>
+  </SelectTrigger>
+  <SelectContent>
+    {
+      config.map((topic) => (
+        <SelectItem value={topic.label.toString()}>
+          <div className="flex items-center gap-3 [&_svg]:h-4 [&_svg]:w-4 [&_svg]:shrink-0 [&_svg]:text-foreground">
+            <Icon name={topic.icon as ComponentProps<typeof Icon>['name']} />
+            {typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')}
+            {topic.badge && (
+              <Badge
+                class="starlight-multiple-sidebar-dropdown-badge"
+                text={
+                  typeof topic.badge.text === 'string'
+                    ? topic.badge.text
+                    : getTranslation(topic.badge.text, topic.link, 'topic badge text')
+                }
+                variant={topic.badge.variant}
+              />
+            )}
+          </div>
+        </SelectItem>
+      ))
+    }
+  </SelectContent>
+</Select> -->
+
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+
 
 <style>
   ul {

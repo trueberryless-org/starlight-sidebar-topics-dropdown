@@ -1,19 +1,19 @@
 {
-  "name": "starlight-sidebar-topics-dropdown-monorepo",
-  "version": "0.0.1",
-  "license": "MIT",
-  "description": "Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.",
-  "author": "trueberryless-org",
-  "type": "module",
-  "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
-  },
-  "packageManager": "pnpm@9.6.0",
-  "private": true,
-  "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git"
-  },
-  "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+    "name": "starlight-sidebar-topics-dropdown-monorepo",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.",
+    "author": "trueberryless-org",
+    "type": "module",
+    "engines": {
+        "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+    },
+    "packageManager": "pnpm@9.6.0",
+    "private": true,
+    "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git"
+    },
+    "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
 }

@@ -1,6 +1,7 @@
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
+import starlightLinksValidator from "starlight-links-validator";
 
 export default defineConfig({
     integrations: [
@@ -54,6 +55,7 @@ export default defineConfig({
                         icon: "starlight",
                     },
                 ]),
+                starlightLinksValidator(),
             ],
             social: {
                 github: "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",

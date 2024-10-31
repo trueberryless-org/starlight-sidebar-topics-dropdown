@@ -1,62 +1,62 @@
 ---
 title: Configuration
-description: An overview of the configuration options supported by the Starlight Multiple Sidebar Dropdown plugin.
+description: An overview of the configuration options supported by the Starlight Sidebar Topics Dropdown plugin.
 ---
 
-The Starlight Multiple Sidebar Dropdown can be configured inside the `astro.config.mjs` configuration file of your project:
+The Starlight Sidebar Topics Dropdown can be configured inside the `astro.config.mjs` configuration file of your project:
 
 ```js {12}
 // astro.config.mjs
 // @ts-check
-import starlight from '@astrojs/starlight'
-import { defineConfig } from 'astro/config'
-import starlightMultipleSidebarDropdown from 'starlight-multiple-sidebar-dropdown'
+import starlight from "@astrojs/starlight";
+import { defineConfig } from "astro/config";
+import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 
 export default defineConfig({
-  integrations: [
-    starlight({
-      plugins: [
-        starlightMultipleSidebarDropdown([
-          // Topics configuration goes here.
-        ]),
-      ],
-      title: 'My Docs',
-    }),
-  ],
-})
+    integrations: [
+        starlight({
+            plugins: [
+                starlightSidebarTopicsDropdown([
+                    // Topics configuration goes here.
+                ]),
+            ],
+            title: "My Docs",
+        }),
+    ],
+});
 ```
 
 ## Topic configuration
 
-The Starlight Multiple Sidebar Dropdown plugin accepts an array of topics to display in the sidebar.
+The Starlight Sidebar Topics Dropdown plugin accepts an array of topics to display in the sidebar.
 
 A topic can represent either a section of your documentation with its own sidebar configuration or a direct link to a specific URL, such as an external resource.
 
 ```js
-starlightMultipleSidebarDropdown([
-  // A topic representing a guide section of your project.
-  {
-    label: 'Guides',
-    icon: 'open-book',
-    // The page to link to when the topic is clicked.
-    link: '/guides/',
-    // The sidebar configuration for the topic.
-    items: [
-      {
-        label: 'Start Here',
-        items: ['guides/concepts', 'guides/courses'],
-      },
-      { label: 'Recipes', autogenerate: { directory: 'guides/recipes' } },
-    ],
-  },
-  // A topic redirecting to the Starlight documentation.
-  {
-    label: 'Starlight docs',
-    icon: 'starlight',
-    // The URL to the external resource to link to.
-    link: 'https://starlight.astro.build',
-  },
-])
+starlightSidebarTopicsDropdown([
+    // A topic representing a guide section of your project.
+    {
+        label: "Guides",
+        icon: "open-book",
+        // The page to link to when the topic is clicked.
+        link: "/guides/",
+        // The sidebar configuration for the topic.
+        items: [
+            {
+                label: "Start Here",
+                items: ["guides/concepts", "guides/courses"],
+            },
+            { label: "Recipes", autogenerate: { directory: "guides/recipes" } },
+        ],
+    },
+    // A topic redirecting to the Starlight documentation.
+    {
+        label: "Starlight docs",
+        icon: "starlight",
+        // The URL to the external resource to link to.
+        link: "https://starlight.astro.build",
+    },
+]);
 ```
 
 A topic can be configured using the following options:
@@ -72,15 +72,15 @@ The value can be a string, or for multilingual sites, an object with values for 
 When using the object form, the keys must be BCP-47 tags (e.g. `en`, `fr`, or `zh-CN`):
 
 ```js {3-6}
-starlightMultipleSidebarDropdown([
-  {
-    label: {
-      en: 'Starlight documentation',
-      fr: 'Documentation de Starlight',
+starlightSidebarTopicsDropdown([
+    {
+        label: {
+            en: "Starlight documentation",
+            fr: "Documentation de Starlight",
+        },
+        link: "https://starlight.astro.build",
     },
-    link: 'https://starlight.astro.build',
-  },
-])
+]);
 ```
 
 ### `link`
@@ -93,12 +93,12 @@ The link to the topic's content which an be a relative link to local files or th
 For internal links, the link can either be a page included in the [`items`](#items) array or a different page acting as the topic's landing page.
 
 ```js {4}
-starlightMultipleSidebarDropdown([
-  {
-    label: 'Starlight docs',
-    link: 'https://starlight.astro.build',
-  },
-])
+starlightSidebarTopicsDropdown([
+    {
+        label: "Starlight docs",
+        link: "https://starlight.astro.build",
+    },
+]);
 ```
 
 ### `items`
@@ -111,19 +111,19 @@ This represents the sidebar displayed when the topic [`link`](#link) page or any
 This option accepts the same configuration as the [Starlight `sidebar` configuration](https://starlight.astro.build/reference/configuration/#sidebar).
 
 ```js {5-11}
-starlightMultipleSidebarDropdown([
-  {
-    label: 'Documentation',
-    link: '/guides/',
-    items: [
-      {
-        label: 'Start Here',
-        items: ['guides/concepts', 'guides/courses'],
-      },
-      { label: 'Recipes', autogenerate: { directory: 'guides/recipes' } },
-    ],
-  },
-])
+starlightSidebarTopicsDropdown([
+    {
+        label: "Documentation",
+        link: "/guides/",
+        items: [
+            {
+                label: "Start Here",
+                items: ["guides/concepts", "guides/courses"],
+            },
+            { label: "Recipes", autogenerate: { directory: "guides/recipes" } },
+        ],
+    },
+]);
 ```
 
 See the [“Sidebar Navigation”](https://starlight.astro.build/guides/sidebar/) guide in the Starlight docs to learn more about sidebar configuration.
@@ -135,13 +135,13 @@ See the [“Sidebar Navigation”](https://starlight.astro.build/guides/sidebar/
 The name of an optional icon to display before the topic label set to [one of Starlight's built-in icons](https://starlight.astro.build/reference/icons/#all-icons).
 
 ```js {5}
-starlightMultipleSidebarDropdown([
-  {
-    label: 'Starlight docs',
-    link: 'https://starlight.astro.build',
-    icon: 'starlight',
-  },
-])
+starlightSidebarTopicsDropdown([
+    {
+        label: "Starlight docs",
+        link: "https://starlight.astro.build",
+        icon: "starlight",
+    },
+]);
 ```
 
 ### `badge`
@@ -153,11 +153,11 @@ An optional badge to display next to the topic label.
 This option accepts the same configuration as the [Starlight `badge` sidebar item configuration](https://starlight.astro.build/guides/sidebar/#badges).
 
 ```js {5}
-starlightMultipleSidebarDropdown([
-  {
-    label: 'Starlight docs',
-    link: 'https://starlight.astro.build',
-    badge: { text: 'Official', variant: 'success' },
-  },
-])
+starlightSidebarTopicsDropdown([
+    {
+        label: "Starlight docs",
+        link: "https://starlight.astro.build",
+        badge: { text: "Official", variant: "success" },
+    },
+]);
 ```

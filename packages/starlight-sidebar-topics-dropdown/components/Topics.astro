@@ -36,104 +36,168 @@ function getTranslation(translations: Record<string, string>, link: string, desc
 }
 ---
 
-<ul>
-  {
-    config.map((topic) => {
-      const isLinkTopic = topic.type === 'link'
-      const isCurrent = isLinkTopic ? false : topic.label === current.label && topic.link === current.link
-      const link =
-        !isLinkTopic && Astro.currentLocale ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link
-      const label =
-        typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')
+<div class="dropdown">
+  <button id="dropdownButton" class="dropdown-button">
+    {current.icon && (
+      <div class="starlight-sidebar-topics-icon">
+        <Icon name={current.icon as ComponentProps<typeof Icon>['name']} />
+      </div>
+    )}
+    <span class="starlight-sidebar-topics-label">{typeof current.label === 'string' ? current.label : getTranslation(current.label, current.link, 'topic label')}</span>
+    {current.badge && (
+      <Badge
+        class="starlight-sidebar-topics-badge"
+        text={
+          typeof current.badge.text === 'string'
+            ? current.badge.text
+            : getTranslation(current.badge.text, current.link, 'current badge text')
+        }
+        variant={current.badge.variant}
+      />
+    )}
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50" aria-hidden="true"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+  </button>
 
-      return (
-        <li>
-          <a href={link} class:list={{ 'starlight-sidebar-topics-dropdown-current': isCurrent }}>
+  <div id="dropdownMenu" class="dropdown-menu" hidden>
+    {
+      config.map((topic) => {
+        const isLinkTopic = topic.type === 'link'
+        const isCurrent = isLinkTopic ? false : topic.label === current.label && topic.link === current.link
+        const link =
+          !isLinkTopic && Astro.currentLocale ? getRelativeLocaleUrl(Astro.currentLocale, topic.link) : topic.link
+        const label =
+          typeof topic.label === 'string' ? topic.label : getTranslation(topic.label, topic.link, 'topic label')
+
+        return (
+          <a href={link} class:list={{ 'dropdown-item': true, 'starlight-sidebar-topics-current': isCurrent }}>
             {topic.icon && (
-              <div class="starlight-sidebar-topics-dropdown-icon">
+              <div class="starlight-sidebar-topics-icon">
                 <Icon name={topic.icon as ComponentProps<typeof Icon>['name']} />
               </div>
             )}
-            <div>
-              {label}
-              {topic.badge && (
-                <Badge
-                  class="starlight-sidebar-topics-dropdown-badge"
-                  text={
-                    typeof topic.badge.text === 'string'
-                      ? topic.badge.text
-                      : getTranslation(topic.badge.text, topic.link, 'topic badge text')
-                  }
-                  variant={topic.badge.variant}
-                />
-              )}
-            </div>
+            <span class="starlight-sidebar-topics-label">{label}</span>
+            {topic.badge && (
+              <Badge
+                class="starlight-sidebar-topics-badge"
+                text={
+                  typeof topic.badge.text === 'string'
+                    ? topic.badge.text
+                    : getTranslation(topic.badge.text, topic.link, 'topic badge text')
+                }
+                variant={topic.badge.variant}
+              />
+            )}
           </a>
-        </li>
-      )
-    })
-  }
-</ul>
+        )
+      })
+    }
+  </div>
+</div>
 
 <style>
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  ul::after {
-    content: '';
+  .dropdown {
+    position: relative;
     display: block;
-    margin-top: 1rem;
-    height: 1px;
-    border-top: 1px solid var(--sl-color-hairline-light);
+    width: 100%;
   }
 
-  li {
-    overflow-wrap: anywhere;
-  }
-
-  li + li {
-    margin-top: 0.25rem;
-  }
-
-  a {
-    align-items: center;
-    color: var(--sl-color-white);
+  .dropdown-button {
     display: flex;
-    font-size: var(--sl-text-base);
+    align-items: center;
+    background-color: var(--sl-color-gray-6);
+    border: 2px solid var(--sl-color-gray-5);
+    border-radius: 0.25rem;
+    color: var(--sl-color-white);
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .dropdown-button:hover {
+    /* border: 2px solid var(--sl-color-gray-4); */
+  }
+
+  .starlight-sidebar-topics-label {
     font-weight: 600;
-    gap: 0.5rem;
-    line-height: 1.5;
-    padding: 0.3em 0.5rem;
+    margin: 0 0.5rem;
+  }
+
+  .dropdown-button>svg {
+    margin-left: auto;
+    font-size: 1rem;
+    color: var(--sl-color-white);
+  }
+
+  .dropdown-menu {
+    display: block;
+    position: absolute;
+    margin-top: 0.25rem;
+    width: 100%;
+    background-color: var(--sl-color-gray-5);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    z-index: 1000000;
+  }
+
+  .dropdown-menu[hidden] {
+    display: none;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.3em;
+    color: var(--sl-color-white);
     text-decoration: none;
+    font-weight: 600;
   }
 
-  a:is(.starlight-sidebar-topics-dropdown-current, :hover, :focus-visible) {
-    color: var(--sl-color-accent-high);
-  }
-
-  :global([data-theme='light']) a.starlight-sidebar-topics-dropdown-current {
-    color: var(--sl-color-accent);
-  }
-
-  .starlight-sidebar-topics-dropdown-icon {
+  .starlight-sidebar-topics-icon {
     align-items: center;
     border-radius: 0.25rem;
     border: 1px solid var(--sl-color-gray-4);
     display: flex;
     justify-content: center;
-    padding: 0.1875rem;
     padding: 0.25rem;
   }
 
-  a:is(.starlight-sidebar-topics-dropdown-current, :hover, :focus-visible) .starlight-sidebar-topics-dropdown-icon {
+  .dropdown-button:is(.starlight-sidebar-topics-current, :hover, :focus-visible) .starlight-sidebar-topics-icon {
+    background-color: var(--sl-color-text-accent);
+    border-color: var(--sl-color-text-accent);
+    color: var(--sl-color-text-invert);
+  }  
+
+  .dropdown-item:is(:hover, .starlight-sidebar-topics-current) .starlight-sidebar-topics-icon {
     background-color: var(--sl-color-text-accent);
     border-color: var(--sl-color-text-accent);
     color: var(--sl-color-text-invert);
   }
 
-  .starlight-sidebar-topics-dropdown-badge {
-    margin-inline-start: 0.25em;
+  .starlight-sidebar-topics-badge {
+    margin-left: 0.25em;
   }
 </style>
+
+<script>
+  const dropdownButton = document.getElementById('dropdownButton');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+
+  if (!dropdownButton || !dropdownMenu) {
+    throw new Error('Dropdown elements not found');
+  }
+
+  dropdownButton.addEventListener('click', () => {
+    const isOpen = !dropdownMenu.hidden;
+    dropdownMenu.hidden = isOpen;
+  });
+
+  function closeDropdown(event) {
+    if (dropdownMenu && !dropdownMenu.contains(event.target) && dropdownButton && !dropdownButton.contains(event.target)) {
+      dropdownMenu.hidden = true;
+    }
+  }
+
+  document.addEventListener('click', closeDropdown);
+</script>

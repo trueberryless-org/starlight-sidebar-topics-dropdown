@@ -13,10 +13,45 @@ export default defineConfig({
             plugins: [
                 starlightSidebarTopicsDropdown([
                     {
-                        label: "Start Here",
-                        link: "/getting-started/",
+                        label: "Documentation",
+                        link: "/docs/getting-started/",
                         icon: "open-book",
-                        items: [{ slug: "getting-started" }],
+                        items: [
+                            {
+                                label: "Start Here",
+                                items: ["docs/getting-started", "docs/configuration"],
+                            },
+                            { label: "Resources", items: ["docs/resources/starlight"] },
+                        ],
+                    },
+                    {
+                        label: {
+                            en: "Demo",
+                            fr: "Démo",
+                        },
+                        link: "/demo/",
+                        icon: "puzzle",
+                        items: [
+                            { label: "API", autogenerate: { directory: "demo/api" } },
+                            { label: "Components", autogenerate: { directory: "demo/components" } },
+                            {
+                                label: "Commands",
+                                autogenerate: { directory: "demo/commands" },
+                                collapsed: true,
+                            },
+                        ],
+                        badge: {
+                            text: {
+                                en: "Stub",
+                                fr: "Ébauche",
+                            },
+                            variant: "caution",
+                        },
+                    },
+                    {
+                        label: "Starlight Docs",
+                        link: "https://starlight.astro.build/",
+                        icon: "starlight",
                     },
                 ]),
             ],

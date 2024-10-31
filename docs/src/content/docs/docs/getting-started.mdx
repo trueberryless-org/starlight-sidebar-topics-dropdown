@@ -1,0 +1,81 @@
+---
+title: Getting Started
+description: Learn how to split your documentation into different sections, called topics, each with its own sidebar.
+---
+
+An opinionated [Starlight](https://starlight.astro.build) plugin to split your documentation into different sections, called topics, each with its own sidebar.
+
+Topics represent either a section of your documentation with its own sidebar configuration or a direct link to a specific URL, such as an external resource.
+Topics are listed above the default Starlight sidebar links and can be used to navigate between different sections of your documentation.
+
+:::tip[See it in action]
+At the top of the sidebar, you can find links to different topics used in this documentation, such as "Documentation" and "Demo" that each have their own sidebar configuration, while the "Starlight Docs" topic is a direct link to the Starlight documentation.
+:::
+
+## Prerequisites
+
+You will need to have a Starlight website set up.
+If you don't have one yet, you can follow the ["Getting Started"](https://starlight.astro.build/getting-started) guide in the Starlight docs to create one.
+
+## Installation
+
+import { Steps } from '@astrojs/starlight/components'
+import { PackageManagers } from '@hideoo/starlight-plugins-docs-components'
+
+<Steps>
+
+1. Starlight Multiple Sidebar Dropdown is a Starlight [plugin](https://starlight.astro.build/reference/plugins/). Install it using your favorite package manager:
+
+   <PackageManagers pkg="starlight-multiple-sidebar-dropdown" />
+
+2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file by specifying an array of topics each with its own sidebar configuration.
+
+   The following example shows how to configure two new topics named "Guides" and "Reference" linking to the `/guides/` and `/reference/` pages respectively with their own sidebar configuration:
+
+   ```diff lang="js"
+   // astro.config.mjs
+   // @ts-check
+   import starlight from '@astrojs/starlight'
+   import { defineConfig } from 'astro/config'
+   +import starlightMultipleSidebarDropdown from 'starlight-multiple-sidebar-dropdown'
+
+   export default defineConfig({
+     integrations: [
+       starlight({
+   +      plugins: [
+   +        starlightMultipleSidebarDropdown([
+   +          {
+   +            label: 'Guides',
+   +            link: '/guides/',
+   +            icon: 'open-book',
+   +            items: ['guides/getting-started', 'guides/manual-setup'],
+   +          },
+   +          {
+   +            label: 'Reference',
+   +            link: '/reference/',
+   +            icon: 'information',
+   +            items: ['reference/api', 'reference/components'],
+   +          },
+   +        ]),
+   +      ],
+   -      sidebar: [
+   -        {
+   -          label: 'Guides',
+   -          items: ['guides/getting-started', 'guides/manual-setup'],
+   -        },
+   -        {
+   -          label: 'Reference',
+   -          items: ['reference/api', 'reference/components'],
+   -        },
+   -      ],
+         title: 'My Docs',
+       }),
+     ],
+   })
+   ```
+
+3. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to preview the changes.
+
+</Steps>
+
+The Starlight Multiple Sidebar Dropdown plugin behavior can be tweaked using various [topic configuration options](/docs/configuration/#topic-configuration).

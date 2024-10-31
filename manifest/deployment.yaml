@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: starlight-sidebar-topics-dropdown
+    namespace: starlight-sidebar-topics-dropdown
+    labels:
+        app: starlight-sidebar-topics-dropdown
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: starlight-sidebar-topics-dropdown
+    template:
+        metadata:
+            labels:
+                app: starlight-sidebar-topics-dropdown
+        spec:
+            containers:
+                - name: starlight-sidebar-topics-dropdown
+                  image: "trueberryless/starlight-sidebar-topics-dropdown:main-3c0d0e5f2393c5a09089851ec7b601d5077f128e"
+                  imagePullPolicy: Always

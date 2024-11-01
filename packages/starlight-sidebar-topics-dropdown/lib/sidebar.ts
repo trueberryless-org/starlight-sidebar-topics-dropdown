@@ -1,6 +1,7 @@
 import type { Props } from "@astrojs/starlight/props";
 
 import type { StarlightSidebarTopicsDropdownSharedConfig } from "./config";
+import { isStarlightEntryWithTopic, type StarlightEntry } from "./content";
 import { getLocaleFromSlug, getLocalizedSlug } from "./i18n";
 import { arePathnamesEqual, stripLeadingAndTrailingSlashes } from "./pathname";
 
@@ -9,8 +10,13 @@ const absoluteLinkRegex = /^https?:\/\//;
 export function getCurrentTopic(
     config: StarlightSidebarTopicsDropdownSharedConfig,
     sidebar: SidebarEntry[],
-    currentSlug: string
+    currentSlug: string,
+    entry: StarlightEntry
 ): Topic | undefined {
+    // If the current page has a topic ID, use it to find the topic.
+    const topicId = getTopicIdFromEntry(entry);
+    if (topicId) return getTopicById(config, sidebar, topicId);
+
     // Start by checking if the current page is a topic root.
     const topicFromSlug = getTopicFromSlug(config, sidebar, currentSlug);
     if (topicFromSlug) return topicFromSlug;
@@ -100,6 +106,29 @@ function getTopicFromSlug(
     return { config: topicConfig, sidebar: topicSidebar };
 }
 
+function getTopicById(
+    config: StarlightSidebarTopicsDropdownSharedConfig,
+    sidebar: SidebarEntry[],
+    id: string
+): Topic | undefined {
+    let topicConfig: Topic["config"] | undefined;
+    let topicSidebar: Topic["sidebar"] | undefined;
+    let groupTopicIndex = -1;
+    for (const topic of config) {
+        if (topic.type === "group") groupTopicIndex++;
+        if (topic.type === "group" && topic.id === id) {
+            const sidebarTopic = sidebar[groupTopicIndex];
+            if (sidebarTopic?.type === "group") {
+                topicConfig = topic;
+                topicSidebar = sidebarTopic.entries;
+            }
+            break;
+        }
+    }
+    if (!topicConfig || !topicSidebar) return;
+    return { config: topicConfig, sidebar: topicSidebar };
+}
+
 function getCurrentSidebarTopic(sidebar: SidebarEntry[]): SidebarTopic | undefined {
     let currentSidebarTopic: SidebarTopic | undefined;
 
@@ -127,6 +156,10 @@ function getCurrentSidebarEntry(sidebar: SidebarEntry[]): SidebarEntry | undefin
     });
 }
 
+function getTopicIdFromEntry(entry: StarlightEntry): string | undefined {
+    return isStarlightEntryWithTopic(entry) ? entry.data.topic : undefined;
+}
+
 type SidebarEntry = Props["sidebar"][number];
 
 interface SidebarTopic {
@@ -134,7 +167,7 @@ interface SidebarTopic {
     entries: SidebarEntry[];
 }
 
-interface Topic {
+export interface Topic {
     config: StarlightSidebarTopicsDropdownSharedConfig[number];
     sidebar: SidebarEntry[];
 }

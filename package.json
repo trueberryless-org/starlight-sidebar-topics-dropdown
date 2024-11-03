@@ -1,6 +1,6 @@
 {
     "name": "starlight-sidebar-topics-dropdown-monorepo",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "license": "MIT",
     "description": "Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.",
     "author": "trueberryless-org",

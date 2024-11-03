@@ -15,6 +15,7 @@
     "dependencies": {
         "@astrojs/starlight": "^0.28.3",
         "@hideoo/starlight-plugins-docs-components": "^0.2.2",
+        "@trueberryless-org/starlight-plugins-docs-components": "^0.1.0",
         "astro": "^4.16.6",
         "sharp": "^0.33.5",
         "starlight-links-validator": "^0.12.4",

@@ -53,11 +53,10 @@ export default defineConfig({
                     },
                     {
                         label: "Showcase",
-                        link: "/showcase/websites/",
+                        link: "/showcase/sites/",
                         icon: "star",
                         items: [
-                            { label: "Showcase", items: ["showcase/websites", "showcase/plugins"] },
-                            { label: "Shoutouts", link: "/showcase/shoutouts" },
+                            { label: "Showcase", items: ["showcase/plugins", "showcase/sites"] },
                         ],
                     },
                     {

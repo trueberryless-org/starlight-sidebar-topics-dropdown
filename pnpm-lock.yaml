@@ -16,6 +16,9 @@ importers:
       '@hideoo/starlight-plugins-docs-components':
         specifier: ^0.2.2
         version: 0.2.2(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+      '@trueberryless-org/starlight-plugins-docs-components':
+        specifier: ^0.1.0
+        version: 0.1.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
       astro:
         specifier: ^4.16.6
         version: 4.16.6(rollup@4.24.0)(typescript@5.6.3)
@@ -619,6 +622,12 @@ packages:
   '@shikijs/vscode-textmate@9.3.0':
     resolution: {integrity: sha512-jn7/7ky30idSkd/O5yDBfAnVt+JJpepofP/POZ1iMOxK59cOfqIgg/Dj0eFsjOTMw+4ycJN0uhZH/Eb0bs/EUA==}
 
+  '@trueberryless-org/starlight-plugins-docs-components@0.1.0':
+    resolution: {integrity: sha512-YayTZvkWFjad1Ck8glSxTM+i1s3UKZgDGWVuIZfttuks9T4OOtKXy98Zy5dRJ8l0v7snjiJE9m9v0kau3qKjBg==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.28'
+
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
 
@@ -787,6 +796,9 @@ packages:
   chalk@5.3.0:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
   character-entities-html4@2.1.0:
     resolution: {integrity: sha512-1v7fgQRj6hnSwFpq1Eu0ynr/CDEw0rXo2B61qXrLNdHZmPKgb7fqS1a2JwF0rISo9q77jDI8VMEHoApn8qDoZA==}
@@ -1769,6 +1781,12 @@ packages:
     peerDependencies:
       '@astrojs/starlight': '>=0.23.0'
 
+  starlight-showcases@0.2.0:
+    resolution: {integrity: sha512-YWJuTqArkUdVJV85VKZJ0BvKCQRu1SKtH/Cr5t6G/oIfI4IptWc92E7BmiuNnpuQ2U7TczTRidCYurPrbgQQVA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.23.0'
+
   stdin-discarder@0.2.2:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
@@ -2596,6 +2614,14 @@ snapshots:
 
   '@shikijs/vscode-textmate@9.3.0': {}
 
+  '@trueberryless-org/starlight-plugins-docs-components@0.1.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))':
+    dependencies:
+      '@astrojs/starlight': 0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+      change-case: 5.4.4
+      starlight-showcases: 0.2.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+    transitivePeerDependencies:
+      - astro
+
   '@types/acorn@4.0.6':
     dependencies:
       '@types/estree': 1.0.6
@@ -2832,6 +2858,8 @@ snapshots:
       supports-color: 5.5.0
 
   chalk@5.3.0: {}
+
+  change-case@5.4.4: {}
 
   character-entities-html4@2.1.0: {}
 
@@ -4340,6 +4368,14 @@ snapshots:
       astro: 4.16.6(rollup@4.24.0)(typescript@5.6.3)
 
   starlight-showcases@0.1.2(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)):
+    dependencies:
+      '@astro-community/astro-embed-twitter': 0.5.8(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+      '@astro-community/astro-embed-youtube': 0.5.5(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+      '@astrojs/starlight': 0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+    transitivePeerDependencies:
+      - astro
+
+  starlight-showcases@0.2.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)):
     dependencies:
       '@astro-community/astro-embed-twitter': 0.5.8(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
       '@astro-community/astro-embed-youtube': 0.5.5(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))

@@ -17,8 +17,8 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
       '@trueberryless-org/starlight-plugins-docs-components':
-        specifier: ^0.1.0
-        version: 0.1.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
+        specifier: ^0.1.1
+        version: 0.1.1(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
       astro:
         specifier: ^4.16.6
         version: 4.16.6(rollup@4.24.0)(typescript@5.6.3)
@@ -622,8 +622,8 @@ packages:
   '@shikijs/vscode-textmate@9.3.0':
     resolution: {integrity: sha512-jn7/7ky30idSkd/O5yDBfAnVt+JJpepofP/POZ1iMOxK59cOfqIgg/Dj0eFsjOTMw+4ycJN0uhZH/Eb0bs/EUA==}
 
-  '@trueberryless-org/starlight-plugins-docs-components@0.1.0':
-    resolution: {integrity: sha512-YayTZvkWFjad1Ck8glSxTM+i1s3UKZgDGWVuIZfttuks9T4OOtKXy98Zy5dRJ8l0v7snjiJE9m9v0kau3qKjBg==}
+  '@trueberryless-org/starlight-plugins-docs-components@0.1.1':
+    resolution: {integrity: sha512-ObYwXX0LT6XH6sYoRV6SChqjDJgk078FlDRPXh4zh30xtwz2KeiwFJ+IbkDNsUYvYVFm7zyMG0c+YDOIKP+tMg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       '@astrojs/starlight': '>=0.28'
@@ -2614,7 +2614,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@9.3.0': {}
 
-  '@trueberryless-org/starlight-plugins-docs-components@0.1.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))':
+  '@trueberryless-org/starlight-plugins-docs-components@0.1.1(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))':
     dependencies:
       '@astrojs/starlight': 0.28.3(astro@4.16.6(rollup@4.24.0)(typescript@5.6.3))
       change-case: 5.4.4

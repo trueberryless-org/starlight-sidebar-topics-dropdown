@@ -17,5 +17,5 @@ spec:
     spec:
       containers:
         - name: starlight-sidebar-topics-dropdown
-          image: "trueberryless/starlight-sidebar-topics-dropdown:main-93150241f868549fd078a3dc082652cbda4860db"
+          image: "trueberryless/starlight-sidebar-topics-dropdown:main-01e0b11ed8ecf35279c1167297c52a99579b2f80"
           imagePullPolicy: Always

@@ -23,7 +23,7 @@ export default defineConfig({
                                 items: ["docs/getting-started", "docs/configuration"],
                             },
                             { label: "Guides", autogenerate: { directory: "docs/guides" } },
-                            { label: "Resources", items: ["docs/resources/starlight"] },
+                            { label: "Resources", autogenerate: { directory: "docs/resources" } },
                         ],
                     },
                     {
@@ -50,14 +50,6 @@ export default defineConfig({
                             },
                             variant: "caution",
                         },
-                    },
-                    {
-                        label: "Showcase",
-                        link: "/showcase/sites/",
-                        icon: "star",
-                        items: [
-                            { label: "Showcase", items: ["showcase/plugins", "showcase/sites"] },
-                        ],
                     },
                     {
                         label: "Starlight Docs",

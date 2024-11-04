@@ -52,6 +52,14 @@ export default defineConfig({
                         },
                     },
                     {
+                        label: "Showcase",
+                        link: "/showcase/sites/",
+                        icon: "star",
+                        items: [
+                            { label: "Showcase", items: ["showcase/plugins", "showcase/sites"] },
+                        ],
+                    },
+                    {
                         label: "Starlight Docs",
                         link: "https://starlight.astro.build/",
                         icon: "starlight",

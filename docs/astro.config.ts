@@ -2,6 +2,7 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 import starlightLinksValidator from "starlight-links-validator";
+import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins-docs-components";
 
 export default defineConfig({
     integrations: [
@@ -23,7 +24,23 @@ export default defineConfig({
                                 items: ["docs/getting-started", "docs/configuration"],
                             },
                             { label: "Guides", autogenerate: { directory: "docs/guides" } },
-                            { label: "Resources", autogenerate: { directory: "docs/resources" } },
+                            {
+                                label: "Resources",
+                                items: [
+                                    {
+                                        label: "Showcase",
+                                        link: "/resources/sites/",
+                                    },
+                                    {
+                                        label: "Plugins",
+                                        link: "/resources/plugins/",
+                                    },
+                                    {
+                                        label: "Content from HiDeoo",
+                                        link: "/resources/hideoo/",
+                                    },
+                                ],
+                            },
                         ],
                     },
                     {
@@ -58,6 +75,19 @@ export default defineConfig({
                     },
                 ]),
                 starlightLinksValidator(),
+                starlightPluginsDocsComponents({
+                    pluginName: "starlight-sidebar-topics-dropdown",
+                    showcaseProps: {
+                        entries: [
+                            {
+                                title: "TanaFlows Documentation",
+                                thumbnail: "./src/assets/tanaflows-docs.png",
+                                href: "https://docs.ghostfam.com/",
+                                description: "Professional multilingual theme for ghost CMS",
+                            },
+                        ],
+                    },
+                }),
             ],
             social: {
                 github: "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",

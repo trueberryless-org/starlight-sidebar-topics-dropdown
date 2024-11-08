@@ -7,6 +7,12 @@ import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins
 export default defineConfig({
     integrations: [
         starlight({
+            title: "Starlight Sidebar Topics Dropdown",
+            logo: {
+                light: "./src/assets/logo-white.png",
+                dark: "./src/assets/logo-dark.png",
+                replacesTitle: true,
+            },
             customCss: ["./src/styles/custom.css"],
             editLink: {
                 baseUrl:
@@ -92,7 +98,6 @@ export default defineConfig({
             social: {
                 github: "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
             },
-            title: "Starlight Sidebar Topics Dropdown",
         }),
     ],
 });

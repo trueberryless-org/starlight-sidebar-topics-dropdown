@@ -1,0 +1,43 @@
+name: Format
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: |
+            - recursive: false
+              args: [--frozen-lockfile]
+            - args: [--global, prettier, sort-package-json]
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Sort package.json
+        run: find . -name "package.json" -not -path "*/node_modules/*" -exec sort-package-json {} \;
+      - name: Format with Prettier
+        run: pnpm prettier --write .
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
+          commit-message: "[ci] format"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: ci-format
+          delete-branch: true
+          title: "[ci] format"
+          body: "This PR was automatically created to sort package.json files in the repository using sort-package-json and to format the repository using prettier."
+          labels: 🤖 bot
+          assignees: trueberryless
+          draft: false

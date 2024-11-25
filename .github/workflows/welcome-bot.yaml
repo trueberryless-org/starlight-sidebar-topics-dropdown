@@ -1,0 +1,36 @@
+name: WelcomeBot
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  welcome:
+    name: Welcome First-Time Contributors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Convert Repository Name to Title Case
+        id: convert_repo_name
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          TITLE_CASE_REPO_NAME=$(echo "$REPO_NAME" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))} 1')
+          echo "title_case_repo_name=$TITLE_CASE_REPO_NAME" >> $GITHUB_ENV
+      - uses: zephyrproject-rtos/action-first-interaction@7e6446f8439d8b4399169880c36a3a12b5747699
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-opened-message: |
+            Hello! Thank you for opening your **first PR** to ${{ env.title_case_repo_name }}! ✨
+
+            Here’s what will happen next:
+
+            1. Our GitHub bots will run to check your changes.
+               If they spot any issues you will see some error messages on this PR.
+               Don’t hesitate to ask any questions if you’re not sure what these mean!
+
+            2. One or more of our maintainers will take a look and may ask you to make changes.
+               We try to be responsive, but don’t worry if this takes a few days.

@@ -1,0 +1,202 @@
+name: Deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Automatically cancel in-progress actions on the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+env:
+  REGISTRY: docker.io
+  IMAGE_OWNER: trueberryless
+  IMAGE_NAME: starlight-sidebar-topics-dropdown
+  NODE_VERSION: 20
+
+jobs:
+  changes:
+    name: Filter
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+
+  changesets:
+    name: Changesets
+    runs-on: ubuntu-latest
+    outputs:
+      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          commit: "[ci] release"
+          title: "[ci] release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  image-tag:
+    name: Image Tag
+    runs-on: ubuntu-latest
+    outputs:
+      IMAGE_TAG: ${{ env.IMAGE_TAG }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Read version from package.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' docs/package.json)
+          echo "IMAGE_TAG=$VERSION" >> $GITHUB_ENV
+
+  deployment:
+    needs: [changes, changesets, image-tag]
+    if: >
+      (
+        needs.changesets.outputs.hasChangesets == 'false' && 
+        (
+          contains(github.event.head_commit.message, 'deploy') || 
+          contains(github.event.head_commit.message, '[ci] release')
+        )
+      ) || 
+      github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          package_json_file: ./docs/package.json
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: ./pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install
+        shell: bash
+        working-directory: ./docs
+
+      - name: Build Website
+        run: pnpm run build
+        shell: bash
+        working-directory: ./docs
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:${{ needs.image-tag.outputs.IMAGE_TAG }}
+            ${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Update deployment.yaml file
+        run: |
+          yq eval '.spec.template.spec.containers[0].image = "${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:${{ needs.image-tag.outputs.IMAGE_TAG }}"' -i manifest/deployment.yaml
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update deployment.json container image (automated)
+
+  release:
+    name: Release
+    needs: [image-tag, deployment]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - id: extract-changelog
+        uses: sean0x42/markdown-extract@v2.1.0
+        with:
+          file: docs/CHANGELOG.md
+          pattern: ${{ needs.image-tag.outputs.IMAGE_TAG }}
+
+      - uses: ncipollo/release-action@v1
+        id: create_release
+        with:
+          tag: ${{ env.IMAGE_NAME }}-docs@${{ needs.image-tag.outputs.IMAGE_TAG }}
+          makeLatest: true
+          body: ${{ steps.extract-changelog.outputs.markdown }}
+          skipIfReleaseExists: true
+
+      - name: Check if release was created
+        id: check_release
+        run: |
+          if [ -z "${{ steps.create_release.outputs.html_url }}" ]; then
+            echo "RELEASE_SKIPPED=true" >> $GITHUB_ENV
+          else
+            echo "RELEASE_SKIPPED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Discord notification
+        if: env.RELEASE_SKIPPED == 'false'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: |
+            # ${{ env.IMAGE_NAME }}@${{ needs.image-tag.outputs.IMAGE_TAG }}
+
+            ${{ steps.extract-changelog.outputs.markdown }}

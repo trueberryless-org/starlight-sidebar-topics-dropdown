@@ -176,7 +176,7 @@ jobs:
         id: create_release
         with:
           tag: ${{ env.IMAGE_NAME }}-docs@${{ needs.image-tag.outputs.IMAGE_TAG }}
-          makeLatest: true
+          makeLatest: false
           body: ${{ steps.extract-changelog.outputs.markdown }}
           skipIfReleaseExists: true
 

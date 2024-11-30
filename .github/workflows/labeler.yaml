@@ -1,0 +1,48 @@
+name: "Pull Request Labeler"
+on:
+  - pull_request_target
+
+jobs:
+  labeler:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure labels exist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label delete "bug" --yes || true
+          gh label delete "documentation" --yes || true
+          gh label delete "duplicate" --yes || true
+          gh label delete "enhancement" --yes || true
+          gh label delete "good first issue" --yes || true
+          gh label delete "help wanted" --yes || true
+          gh label delete "invalid" --yes || true
+          gh label delete "question" --yes || true
+          gh label delete "wontfix" --yes || true
+
+          gh label create "🚨 action" --description "Changes in GitHub workflows or actions" --color "A75AD5" --force
+          gh label create "🤖 bot" --description "Automatically generated pull request" --color "0075CA" --force
+          gh label create "🐛 bug" --description "Something isn't working" --color "D73A4A" --force
+          gh label create "📝 changeset" --description "Contains changeset files" --color "304EF9" --force
+          gh label create "🚧 config" --description "Configuration file updates" --color "C0ED4F" --force
+          gh label create "✒️ documentation" --description "Documentation updates, like README changes" --color "66741D" --force
+          gh label create "🔁 duplicate" --description "This issue or pull request already exists" --color "008672" --force
+          gh label create "⏫ enhancement" --description "New feature or request" --color "3C11FD" --force
+          gh label create "🥇 good first issue" --description "Good for newcomers" --color "7057FF" --force
+          gh label create "🆘 help wanted" --description "Extra attention is needed" --color "BFD4F2" --force
+          gh label create "🌏 i18n" --description "Updates to internationalized docs, excluding English" --color "006B75" --force
+          gh label create "👀 invalid" --description "This doesn't seem right" --color "E4E669" --force
+          gh label create "🚀 manifest" --description "Manifest-related changes" --color "96D3D7" --force
+          gh label create "📦 package" --description "Updates in package structure or package.json" --color "F34A37" --force
+          gh label create "❓ question" --description "Further information is requested" --color "D876E3" --force
+          gh label create "🏯 styles" --description "Stylesheets or design updates" --color "550F5A" --force
+          gh label create "🔒 wontfix" --description "This will not be worked on" --color "FFFFFF" --force
+
+      - uses: actions/labeler@v5
+        with:
+          configuration-path: .github/labeler.yaml
+          sync-labels: true

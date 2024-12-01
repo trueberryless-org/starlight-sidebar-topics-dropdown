@@ -1,7 +1,11 @@
+Dockerfile
+.dockerignore
 **/node_modules/
 **/.git
+README.md
 npm-debug.log
 .coverage
 .coverage.*
 .env
 .aws
+.next

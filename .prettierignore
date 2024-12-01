@@ -1,0 +1,44 @@
+# Dependency directories
+node_modules/
+dist/
+build/
+out/
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Build and generated files
+*.min.*
+*.bundle.*
+*.map
+
+# Git and version control
+**/.git
+
+# Framework-specific files
+next-env.d.ts
+__generated__/
+
+# Test and coverage files
+coverage/
+*.spec.*
+*.test.*
+
+# Editor-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Markdown and MDX files
+*.md
+*.mdx
+
+# Changelog
+.changeset

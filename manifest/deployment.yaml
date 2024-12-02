@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: starlight-sidebar-topics-dropdown
-  namespace: starlight-sidebar-topics-dropdown
+  name: <%= repositoryName %>
+  namespace: <%= repositoryName %>
   labels:
-    app: starlight-sidebar-topics-dropdown
+    app: <%= repositoryName %>
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: starlight-sidebar-topics-dropdown
+      app: <%= repositoryName %>
   template:
     metadata:
       labels:
-        app: starlight-sidebar-topics-dropdown
+        app: <%= repositoryName %>
     spec:
       containers:
-        - name: starlight-sidebar-topics-dropdown
-          image: "trueberryless/starlight-sidebar-topics-dropdown"
+        - name: <%= repositoryName %>
+          image: "trueberryless/<%= repositoryName %>"
           imagePullPolicy: Always

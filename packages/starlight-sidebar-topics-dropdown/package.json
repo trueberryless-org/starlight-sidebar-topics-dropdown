@@ -30,11 +30,11 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@astrojs/starlight": "^0.28.3",
-    "astro": "^4.16.6"
+    "@astrojs/starlight": "^0.30.3",
+    "astro": "^5.1.1"
   },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.28"
+    "@astrojs/starlight": ">=0.30"
   },
   "packageManager": "pnpm@9.3.0",
   "engines": {

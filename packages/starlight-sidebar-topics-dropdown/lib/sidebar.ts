@@ -95,7 +95,7 @@ function getTopicFromSlug(
 ): Topic | undefined {
   let topicConfig: Topic["config"] | undefined;
   let topicSidebar: Topic["sidebar"] | undefined;
-  let sidebarHasGroups = false;
+  let sidebarHasGroups = true;
 
   // Start by checking if the current page is a topic homepage.
   let groupTopicIndex = -1;
@@ -141,7 +141,7 @@ function getTopicById(
 ): Topic | undefined {
   let topicConfig: Topic["config"] | undefined;
   let topicSidebar: Topic["sidebar"] | undefined;
-  let sidebarHasGroups = false;
+  let sidebarHasGroups = true;
   let groupTopicIndex = -1;
   for (const topic of config) {
     if (topic.type === "group") groupTopicIndex++;

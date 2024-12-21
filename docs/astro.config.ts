@@ -78,6 +78,15 @@ export default defineConfig({
             },
           },
           {
+            id: "unnested-sidebar",
+            label: "Unnested Sidebar",
+            link: "/unnested-sidebar/",
+            icon: "right-caret",
+            items: [
+              { label: "", autogenerate: { directory: "unnested-sidebar" } },
+            ],
+          },
+          {
             label: "Starlight Docs",
             link: "https://starlight.astro.build/",
             icon: "starlight",

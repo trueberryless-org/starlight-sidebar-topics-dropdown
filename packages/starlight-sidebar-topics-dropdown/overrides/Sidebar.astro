@@ -26,3 +26,15 @@ Learn more about unlisted pages in the ["Unlisted pages"](https://starlight-side
 
 {entry['data'].template !== 'splash' && currentTopic && <Topics current={currentTopic.config} />}
 <Default {...Astro.props} sidebar={currentSidebar}><slot /></Default>
+
+{!currentTopic?.sidebarHasGroups &&
+  <style is:global>
+    sl-sidebar-state-persist summary {
+      display: none !important;
+    }
+    sl-sidebar-state-persist ul li {
+      margin-inline-start: 0;
+      border-inline-start: none;
+    }
+  </style>
+}

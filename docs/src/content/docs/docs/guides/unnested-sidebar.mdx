@@ -1,0 +1,56 @@
+---
+title: Unnested Sidebar
+description: Learn how to configure the Starlight Sidebar Topics Dropdown plugin to display a single-level sidebar without nesting items.
+---
+
+By default, the Starlight Sidebar Topics Dropdown plugin displays a nested sidebar with multiple levels of items. This allows you to organize your documentation essentially on four levels:
+
+1. **Topics**: Representing the main sections of your documentation.
+2. **Sidebar Groups**: Representing the sub-sections of a topic.
+3. **Sidebar Items / Pages**: Representing the individual pages of a sidebar group.
+4. **Table of Contents**: Representing the headings of a page.
+
+However, sometimes you don't need so many levels of nesting and want to display a single-level sidebar with all items directly under the topic. This plugin makes this possible by providing the option to configure an unnested sidebar, which will result in only three levels of organization:
+
+1. **Topics**: Representing the main sections of your documentation.
+2. **Sidebar Items / Pages**: Representing the individual pages of a topic.
+3. **Table of Contents**: Representing the headings of a page.
+
+In other words, there are no groups in the sidebar, only the items of a topic are displayed directly under the topic.
+
+## Configure an unnested sidebar
+
+To configure an unnested sidebar, set the `label` option of the `items` array to `""` for all sidebar groups in the topic configuration where you want to display a single-level sidebar.
+
+Here is an example of this feature:
+
+```js "label: \"\""
+export default defineConfig({
+  integrations: [
+    starlight({
+      title: "Starlight Sidebar Topics Dropdown",
+      plugins: [
+        starlightSidebarTopicsDropdown([
+          {
+            id: "unnested-sidebar",
+            label: "Unnested Sidebar",
+            link: "/unnested-sidebar/",
+            icon: "right-caret",
+            items: [
+              { label: "", autogenerate: { directory: "unnested-sidebar" } },
+            ],
+          },
+        ]),
+      ],
+    }),
+  ],
+});
+```
+
+You can see how the sidebar is displayed in the [Unnested Sidebar](/unnested-sidebar/lorem-ipsum/) topic.
+
+:::note
+Please note, that this feature only works under two conditions:
+
+1. The `label` option of the `items` array must be set to `""`.
+2. The `items` array must contain only **one item**.

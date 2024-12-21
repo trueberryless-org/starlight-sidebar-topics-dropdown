@@ -1,6 +1,6 @@
 {
   "name": "starlight-sidebar-topics-dropdown-docs",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "private": true,
   "description": "Starlight plugin to split your docs page into multiple subpages and switch between them with a dropdown menu in the sidebar.",
   "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",

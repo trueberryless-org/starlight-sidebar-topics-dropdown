@@ -29,7 +29,15 @@ export function getCurrentTopic(
     config[Number.parseInt(currentSidebarTopic.label, 10)];
   if (!currentTopicConfig) return;
 
-  return { config: currentTopicConfig, sidebar: currentSidebarTopic.entries };
+  const sidebarHasGroups =
+    currentSidebarTopic.entries.length !== 1 ||
+    currentSidebarTopic.entries[0]?.label !== "";
+
+  return {
+    config: currentTopicConfig,
+    sidebar: currentSidebarTopic.entries,
+    sidebarHasGroups,
+  };
 }
 
 export function isTopicFirstPage(
@@ -87,6 +95,7 @@ function getTopicFromSlug(
 ): Topic | undefined {
   let topicConfig: Topic["config"] | undefined;
   let topicSidebar: Topic["sidebar"] | undefined;
+  let sidebarHasGroups = false;
 
   // Start by checking if the current page is a topic homepage.
   let groupTopicIndex = -1;
@@ -111,6 +120,9 @@ function getTopicFromSlug(
       if (sidebarTopic?.type === "group") {
         topicConfig = topic;
         topicSidebar = sidebarTopic.entries;
+        sidebarHasGroups =
+          sidebarTopic.entries.length !== 1 ||
+          sidebarTopic.entries[0]?.label !== "";
       }
 
       break;
@@ -119,7 +131,7 @@ function getTopicFromSlug(
 
   if (!topicConfig || !topicSidebar) return;
 
-  return { config: topicConfig, sidebar: topicSidebar };
+  return { config: topicConfig, sidebar: topicSidebar, sidebarHasGroups };
 }
 
 function getTopicById(
@@ -129,6 +141,7 @@ function getTopicById(
 ): Topic | undefined {
   let topicConfig: Topic["config"] | undefined;
   let topicSidebar: Topic["sidebar"] | undefined;
+  let sidebarHasGroups = false;
   let groupTopicIndex = -1;
   for (const topic of config) {
     if (topic.type === "group") groupTopicIndex++;
@@ -137,12 +150,15 @@ function getTopicById(
       if (sidebarTopic?.type === "group") {
         topicConfig = topic;
         topicSidebar = sidebarTopic.entries;
+        sidebarHasGroups =
+          sidebarTopic.entries.length !== 1 ||
+          sidebarTopic.entries[0]?.label !== "";
       }
       break;
     }
   }
   if (!topicConfig || !topicSidebar) return;
-  return { config: topicConfig, sidebar: topicSidebar };
+  return { config: topicConfig, sidebar: topicSidebar, sidebarHasGroups };
 }
 
 function getCurrentSidebarTopic(
@@ -190,4 +206,5 @@ interface SidebarTopic {
 export interface Topic {
   config: StarlightSidebarTopicsDropdownSharedConfig[number];
   sidebar: SidebarEntry[];
+  sidebarHasGroups: boolean;
 }

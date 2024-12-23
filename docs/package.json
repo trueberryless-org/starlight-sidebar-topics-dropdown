@@ -27,6 +27,7 @@
     "astro": "^5.1.1",
     "sharp": "^0.33.5",
     "starlight-links-validator": "^0.14.0",
+    "starlight-plugin-show-latest-version": "^0.2.0",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },
   "packageManager": "pnpm@9.3.0",

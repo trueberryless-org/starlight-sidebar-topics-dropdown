@@ -35,6 +35,9 @@ importers:
       starlight-links-validator:
         specifier: ^0.14.0
         version: 0.14.0(@astrojs/starlight@0.30.3(astro@5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2)))
+      starlight-plugin-show-latest-version:
+        specifier: ^0.2.0
+        version: 0.2.0(@astrojs/starlight@0.30.3(astro@5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2)))
       starlight-sidebar-topics-dropdown:
         specifier: workspace:*
         version: link:../packages/starlight-sidebar-topics-dropdown
@@ -2194,6 +2197,12 @@ packages:
     engines: {node: '>=18.17.1'}
     peerDependencies:
       '@astrojs/starlight': '>=0.22.0'
+
+  starlight-plugin-show-latest-version@0.2.0:
+    resolution: {integrity: sha512-isJafUbOIL6IjH0YhbWPhEAnKj4Q32hdfd7scUP2RAH0LknejNqk90oChfBQMB6rmlnb6n4qO7b8823LyZpn5Q==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.30'
 
   starlight-showcases@0.1.2:
     resolution: {integrity: sha512-yj3RjcdWLIWdehTjne9Ethd3ff95vMbuVx/87lU4yilTQewQxjnAyOf1KSnGUgTMQT5WTqhDw8LciPBJox+b8Q==}
@@ -5302,6 +5311,10 @@ snapshots:
       astro: 5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2)
 
   starlight-package-managers@0.8.1(@astrojs/starlight@0.30.3(astro@5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2))):
+    dependencies:
+      '@astrojs/starlight': 0.30.3(astro@5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2))
+
+  starlight-plugin-show-latest-version@0.2.0(@astrojs/starlight@0.30.3(astro@5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2))):
     dependencies:
       '@astrojs/starlight': 0.30.3(astro@5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2))
 

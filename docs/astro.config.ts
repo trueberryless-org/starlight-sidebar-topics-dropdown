@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins-docs-components";
+import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
 
 export default defineConfig({
   integrations: [
@@ -105,6 +106,9 @@ export default defineConfig({
               },
             ],
           },
+        }),
+        starlightPluginShowLatestVersion({
+          repo: "trueberryless-org/starlight-sidebar-topics-dropdown",
         }),
       ],
       social: {

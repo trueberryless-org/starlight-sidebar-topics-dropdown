@@ -1,5 +1,11 @@
 # starlight-sidebar-topics-dropdown-docs
 
+## 0.3.1
+
+### Patch Changes
+
+- [#21](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/21) [`7a517ee`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/7a517eeed267301f325712394f650a3dcc3b049c) Thanks [@trueberryless](https://github.com/trueberryless)! - Add Starlight Plugin Show Latest Version
+
 ## 0.3.0
 
 ### Minor Changes

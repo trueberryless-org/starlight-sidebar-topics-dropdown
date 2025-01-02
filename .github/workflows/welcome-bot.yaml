@@ -13,6 +13,13 @@ jobs:
     name: Welcome First-Time Contributors
     runs-on: ubuntu-latest
     steps:
+      - name: Generate GitHub App token
+        id: generate_token
+        uses: tibdex/github-app-token@v2.1.0
+        with:
+          app_id: ${{ secrets.BOT_APP_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - uses: actions/checkout@v4
       - name: Convert Repository Name to Title Case
         id: convert_repo_name
@@ -22,7 +29,7 @@ jobs:
           echo "title_case_repo_name=$TITLE_CASE_REPO_NAME" >> $GITHUB_ENV
       - uses: zephyrproject-rtos/action-first-interaction@7e6446f8439d8b4399169880c36a3a12b5747699
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ steps.generate_token.outputs.token }}
           pr-opened-message: |
             Hello! Thank you for opening your **first PR** to ${{ env.title_case_repo_name }}! ✨
 

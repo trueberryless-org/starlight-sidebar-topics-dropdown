@@ -30,7 +30,7 @@
     "starlight-plugin-show-latest-version": "^0.2.0",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@9.6.0",
   "engines": {
     "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
   }

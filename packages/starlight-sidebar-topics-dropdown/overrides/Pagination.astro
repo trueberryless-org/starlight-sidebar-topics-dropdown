@@ -1,10 +1,9 @@
 ---
 import Default from '@astrojs/starlight/components/Pagination.astro'
-import type { Props } from '@astrojs/starlight/props'
 
 import { isTopicFirstPage, isTopicLastPage } from '../lib/sidebar'
 
-const { id, pagination, sidebar } = Astro.props
+const { id, pagination, sidebar } = Astro.locals.starlightRoute;
 let { prev, next } = pagination
 
 if (isTopicFirstPage(sidebar, id)) {
@@ -16,4 +15,4 @@ if (isTopicLastPage(sidebar, id)) {
 }
 ---
 
-<Default {...Astro.props} pagination={{ prev, next }}><slot /></Default>
+<Default pagination={{ prev, next }}><slot /></Default>

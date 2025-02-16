@@ -1,13 +1,12 @@
 ---
 import Default from '@astrojs/starlight/components/Sidebar.astro'
-import type { Props } from '@astrojs/starlight/props'
 import config from 'virtual:starlight-sidebar-topics-dropdown/config'
 
 import Topics from '../components/Topics.astro'
 import { throwPluginError } from '../lib/plugin'
 import { getCurrentTopic, type Topic } from '../lib/sidebar'
 
-const { id, entry, sidebar } = Astro.props
+const { id, entry, sidebar } = Astro.locals.starlightRoute;
 
 let currentSidebar = sidebar
 let currentTopic: Topic | undefined = undefined
@@ -25,7 +24,7 @@ Learn more about unlisted pages in the ["Unlisted pages"](https://starlight-side
 ---
 
 {entry['data'].template !== 'splash' && currentTopic && <Topics current={currentTopic.config} />}
-<Default {...Astro.props} sidebar={currentSidebar}><slot /></Default>
+<Default sidebar={currentSidebar}><slot /></Default>
 
 {!currentTopic?.sidebarHasGroups &&
   <style is:global>

@@ -14,11 +14,6 @@ export function overrideStarlightComponent(
     logger.warn(
       `To use \`starlight-sidebar-topics-dropdown\`, either remove your override or update it to render the content from \`starlight-sidebar-topics-dropdown/components/${component}.astro\`.`
     );
-    // if (component === "DynamicVersionBadge") {
-    //   logger.warn(
-    //     "Notice that the `DynamicVersionBadge` component must be rendered AFTER the original Starlight `SiteTitle` component in the DOM. This ensures proper layout and behavior within the application."
-    //   );
-    // }
 
     return {};
   }

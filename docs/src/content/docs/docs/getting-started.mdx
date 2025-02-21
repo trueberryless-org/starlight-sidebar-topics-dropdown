@@ -83,3 +83,21 @@ import { PackageManagers } from "@hideoo/starlight-plugins-docs-components";
 </Steps>
 
 The Starlight Sidebar Topics Dropdown plugin behavior can be tweaked using various [topic configuration options](/docs/configuration/#topic-configuration).
+
+## Component overrides
+
+The Starlight Sidebar Topics Dropdown plugin uses a Starlight [component override](https://starlight.astro.build/guides/overriding-components/) for the [`Sidebar`](https://starlight.astro.build/reference/overrides/#sidebar) component to add the dropdown which enables choosing between different topics.
+
+If you have a custom `Sidebar` component override in your Starlight project, you will need to manually render the `Sidebar` component from the Starlight Sidebar Topics Dropdown plugin in your custom component:
+
+```diff lang="astro"
+---
+// src/components/overrides/Sidebar.astro
+import Default from '@astrojs/starlight/components/Sidebar.astro'
++import StarlightSidebarTopicsDropdownSidebar from 'starlight-sidebar-topics-dropdown/components/Sidebar.astro'
+---
+
++<StarlightSidebarTopicsDropdownSidebar />
+<p>Custom content in the Sidebar override</p>
+<Default><slot /></Default>
+```

@@ -7,8 +7,9 @@ import {
   StarlightSidebarTopicsDropdownConfigSchema,
   type StarlightSidebarTopicsDropdownUserConfig,
 } from "./libs/config";
-import { overrideStarlightComponent, throwPluginError } from "./libs/plugin";
+import { throwPluginError } from "./libs/plugin";
 import { vitePluginStarlightSidebarTopicsDropdown } from "./libs/vite";
+import { overrideStarlightComponent } from "./libs/starlight";
 
 export type {
   StarlightSidebarTopicsDropdownConfig,
@@ -68,6 +69,7 @@ export default function starlightSidebarTopicsDropdownPlugin(
             ...overrideStarlightComponent(
               starlightConfig.components,
               logger,
+              "Sidebar",
               "Sidebar"
             ),
           },

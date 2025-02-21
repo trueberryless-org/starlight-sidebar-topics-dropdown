@@ -1,5 +1,21 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.4.0
+
+### Minor Changes
+
+- [#31](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/31) [`3193771`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/31937716171b020f414ece6783c17181fbd5fdcf) Thanks [@trueberryless](https://github.com/trueberryless)! - ⚠️ **BREAKING CHANGE:** The Starlight Sidebar Topics Dropdown plugin no longer provides the same ["Unnested Sidebar" configuration](https://starlight-sidebar-topics-dropdown.trueberryless.org/docs/guides/unnested-sidebar/) like before. Please adapt your `astro.config.mjs` with the up-to-date guide on [how to configure a "Unnested Sidebar"](https://starlight-sidebar-topics-dropdown.trueberryless.org/docs/guides/unnested-sidebar/#configure-an-unnested-sidebar).
+
+- [#31](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/31) [`db10526`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/db10526d49aab3ac8619159d40968dbc4748c9a0) Thanks [@trueberryless](https://github.com/trueberryless)! - ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now version `0.32.0`.
+
+  Please use the `@astrojs/upgrade` command to upgrade your project:
+
+  ```sh
+  npx @astrojs/upgrade
+  ```
+
+- [#31](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/31) [`db10526`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/db10526d49aab3ac8619159d40968dbc4748c9a0) Thanks [@trueberryless](https://github.com/trueberryless)! - ⚠️ **BREAKING CHANGE:** The Starlight Sidebar Topics Dropdown plugin no longer [overrides](https://starlight.astro.build/guides/overriding-components/) the [`<Pagination>` component](https://starlight.astro.build/reference/overrides/#pagination). If you were manually rendering `starlight-sidebar-topics-dropdown/overrides/Pagination.astro` in a custom override, you can now remove it.
+
 ## 0.3.0
 
 ### Minor Changes

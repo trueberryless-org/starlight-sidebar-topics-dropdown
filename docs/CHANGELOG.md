@@ -1,5 +1,12 @@
 # starlight-sidebar-topics-dropdown-docs
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [[`3193771`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/31937716171b020f414ece6783c17181fbd5fdcf), [`db10526`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/db10526d49aab3ac8619159d40968dbc4748c9a0), [`db10526`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/db10526d49aab3ac8619159d40968dbc4748c9a0)]:
+  - starlight-sidebar-topics-dropdown@0.4.0
+
 ## 0.3.1
 
 ### Patch Changes

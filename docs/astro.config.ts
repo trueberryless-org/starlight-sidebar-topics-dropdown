@@ -5,6 +5,8 @@ import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins-docs-components";
 import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
 
+import node from "@astrojs/node";
+
 export default defineConfig({
   integrations: [
     starlight({
@@ -84,7 +86,8 @@ export default defineConfig({
             link: "/unnested-sidebar/",
             icon: "right-caret",
             items: [
-              { label: "", autogenerate: { directory: "unnested-sidebar" } },
+              { slug: "unnested-sidebar" },
+              { slug: "unnested-sidebar/lorem-ipsum" },
             ],
           },
           {
@@ -108,7 +111,11 @@ export default defineConfig({
           },
         }),
         starlightPluginShowLatestVersion({
-          repo: "trueberryless-org/starlight-sidebar-topics-dropdown",
+          source: {
+            type: "npm",
+            slug: "starlight-sidebar-topics-dropdown",
+          },
+          showInSiteTitle: "deferred",
         }),
       ],
       social: {
@@ -117,4 +124,7 @@ export default defineConfig({
       },
     }),
   ],
+  adapter: node({
+    mode: "standalone",
+  }),
 });

@@ -20,7 +20,9 @@ In other words, there are no groups in the sidebar, only the items of a topic ar
 
 ## Configure an unnested sidebar
 
-To configure an unnested sidebar, set the `label` option of the `items` array to `""` for all sidebar groups in the topic configuration where you want to display a single-level sidebar.
+To configure an unnested sidebar, list the items directly inside the [`items` topic array](/docs/configuration#items) using the `slug` option provided by the [`SidebarItem` type](https://starlight.astro.build/reference/configuration/#sidebaritem). Starlight Sidebar Topics Dropdown Plugin automatically applies CSS to make the items look right.
+
+Unfortunately, there is no option for autogenerating an unnested sidebar, which is currently a limitation by Starlight.
 
 Here is an example of this feature:
 
@@ -37,7 +39,8 @@ export default defineConfig({
             link: "/unnested-sidebar/",
             icon: "right-caret",
             items: [
-              { label: "", autogenerate: { directory: "unnested-sidebar" } },
+              { slug: "unnested-sidebar" },
+              { slug: "unnested-sidebar/lorem-ipsum" },
             ],
           },
         ]),
@@ -48,9 +51,3 @@ export default defineConfig({
 ```
 
 You can see how the sidebar is displayed in the [Unnested Sidebar](/unnested-sidebar/lorem-ipsum/) topic.
-
-:::note
-Please note, that this feature only works under two conditions:
-
-1. The `label` option of the `items` array must be set to `""`.
-2. The `items` array must contain only **one item**.

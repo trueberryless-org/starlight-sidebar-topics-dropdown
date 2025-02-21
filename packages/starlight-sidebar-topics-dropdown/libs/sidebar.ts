@@ -1,4 +1,4 @@
-import type { Props } from "@astrojs/starlight/props";
+import type { StarlightRouteData } from "@astrojs/starlight/route-data";
 
 import type { StarlightSidebarTopicsDropdownSharedConfig } from "./config";
 import { isStarlightEntryWithTopic, type StarlightEntry } from "./content";
@@ -196,7 +196,7 @@ function getTopicIdFromEntry(entry: StarlightEntry): string | undefined {
   return isStarlightEntryWithTopic(entry) ? entry.data.topic : undefined;
 }
 
-type SidebarEntry = Props["sidebar"][number];
+type SidebarEntry = StarlightRouteData["sidebar"][number];
 
 interface SidebarTopic {
   label: string;

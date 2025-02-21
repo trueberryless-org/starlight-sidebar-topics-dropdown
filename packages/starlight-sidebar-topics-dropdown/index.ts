@@ -6,14 +6,14 @@ import type {
 import {
   StarlightSidebarTopicsDropdownConfigSchema,
   type StarlightSidebarTopicsDropdownUserConfig,
-} from "./lib/config";
-import { overrideStarlightComponent, throwPluginError } from "./lib/plugin";
-import { vitePluginStarlightSidebarTopicsDropdown } from "./lib/vite";
+} from "./libs/config";
+import { overrideStarlightComponent, throwPluginError } from "./libs/plugin";
+import { vitePluginStarlightSidebarTopicsDropdown } from "./libs/vite";
 
 export type {
   StarlightSidebarTopicsDropdownConfig,
   StarlightSidebarTopicsDropdownUserConfig,
-} from "./lib/config";
+} from "./libs/config";
 
 export default function starlightSidebarTopicsDropdownPlugin(
   userConfig: StarlightSidebarTopicsDropdownUserConfig
@@ -34,8 +34,9 @@ export default function starlightSidebarTopicsDropdownPlugin(
   return {
     name: "starlight-sidebar-topics-dropdown-plugin",
     hooks: {
-      setup({
+      "config:setup"({
         addIntegration,
+        addRouteMiddleware,
         command,
         config: starlightConfig,
         logger,
@@ -46,9 +47,13 @@ export default function starlightSidebarTopicsDropdownPlugin(
         if (starlightConfig.sidebar) {
           throwPluginError(
             "It looks like you have a `sidebar` configured in your Starlight configuration. To use `starlight-sidebar-topics-dropdown`, create a new topic with your sidebar items.",
-            "Learn more about topic configuration at https://starlight-sidebar-topics-dropdown.netlify.app/docs/configuration/"
+            "Learn more about topic configuration at https://starlight-sidebar-topics-dropdown.trueberryless.org/docs/configuration/"
           );
         }
+
+        addRouteMiddleware({
+          entrypoint: "starlight-sidebar-topics-dropdown/middleware",
+        });
 
         const sidebar: StarlightUserConfig["sidebar"] = [];
 
@@ -64,11 +69,6 @@ export default function starlightSidebarTopicsDropdownPlugin(
               starlightConfig.components,
               logger,
               "Sidebar"
-            ),
-            ...overrideStarlightComponent(
-              starlightConfig.components,
-              logger,
-              "Pagination"
             ),
           },
           sidebar,

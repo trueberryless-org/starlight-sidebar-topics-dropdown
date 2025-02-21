@@ -23,7 +23,7 @@ To add support for unlisted content pages, update the content config file to add
 import { defineCollection } from 'astro:content'
 import { docsLoader } from '@astrojs/starlight/loaders'
 import { docsSchema } from '@astrojs/starlight/schema'
-+import { topicSchema } from 'starlight-sidebar-topics/schema'
++import { topicSchema } from 'starlight-sidebar-topics-dropdown/schema'
 
 export const collections = {
   docs: defineCollection({     
@@ -42,13 +42,13 @@ To associate an unlisted content page with a specific topic, the topic must defi
 // @ts-check
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
-import starlightSidebarTopics from "starlight-sidebar-topics";
+import StarlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 
 export default defineConfig({
     integrations: [
         starlight({
             plugins: [
-                starlightSidebarTopics([
+                StarlightSidebarTopicsDropdown([
                     {
                         label: "Guides",
                         icon: "open-book",

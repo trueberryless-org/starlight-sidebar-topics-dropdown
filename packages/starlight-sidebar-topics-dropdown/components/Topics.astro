@@ -6,7 +6,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 import starlightConfig from 'virtual:starlight/user-config'
 import config from 'virtual:starlight-sidebar-topics-dropdown/config'
 
-import type { StarlightSidebarTopicsDropdownSharedConfig } from '../lib/config'
+import type { StarlightSidebarTopicsDropdownSharedConfig } from '../libs/config'
 
 interface Props {
   current: StarlightSidebarTopicsDropdownSharedConfig[number]
@@ -98,9 +98,9 @@ function getTranslation(translations: Record<string, string>, link: string, desc
   .starlight-sidebar-topics-dropdown-dropdown {
     position: relative;
     display: block;
-    width: calc(100% - 8px - 2 * 2px);
-    margin-left: calc(8px + 2px);
-    margin-right: calc(2px);
+    width: calc(100% - 2 * 2px);
+    margin-inline: 2px;
+		margin-top: 4px;
   }
 
   .starlight-sidebar-topics-dropdown-button {

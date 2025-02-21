@@ -88,6 +88,11 @@ export default defineConfig({
             items: [
               { slug: "unnested-sidebar" },
               { slug: "unnested-sidebar/lorem-ipsum" },
+              {
+                label: "Lorem ipsum",
+                items: [{ slug: "unnested-sidebar/group/lorem-ipsum" }],
+              },
+              { slug: "unnested-sidebar/lorem-ipsum-2" },
             ],
           },
           {

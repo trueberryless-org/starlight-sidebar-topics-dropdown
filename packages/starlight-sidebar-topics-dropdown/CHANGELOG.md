@@ -1,5 +1,11 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.4.1
+
+### Patch Changes
+
+- [`01024d4`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/01024d471326097f20087ac401bd1df4d9a8cd22) Thanks [@trueberryless](https://github.com/trueberryless)! - Small fixes and docs changes
+
 ## 0.4.0
 
 ### Minor Changes

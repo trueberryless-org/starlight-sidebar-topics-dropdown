@@ -1,7 +1,4 @@
-FROM node:20-alpine AS runtime
-WORKDIR /app
-COPY /docs/dist ./dist
+FROM httpd:2.4 AS runtime
+COPY /docs/dist /usr/local/apache2/htdocs/
 EXPOSE 80
-ENV HOST=0.0.0.0
-ENV PORT=80
-CMD ["node", "dist/server/entry.mjs"]
+EXPOSE 443

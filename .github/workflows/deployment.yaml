@@ -64,14 +64,23 @@ jobs:
         run: pnpm i
 
       - name: Create Release Pull Request
-        id: changesets
         uses: changesets/action@v1
+        id: changesets
         with:
-          commit: "[ci] release"
+          version: pnpm run version
+          commit: "chore: release"
           title: "[ci] release"
         env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token}}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Get published version
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        run: |
+          git checkout changeset-release/main
+          VERSION=$(node -p "require('./docs/package.json').version")
+          git commit --amend -m "chore(release): publish v$VERSION" --no-edit
+          git push origin changeset-release/main:changeset-release/main --force
 
   image-tag:
     name: Image Tag

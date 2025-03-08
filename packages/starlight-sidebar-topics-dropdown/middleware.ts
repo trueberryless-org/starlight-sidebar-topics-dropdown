@@ -2,8 +2,8 @@ import { defineRouteMiddleware } from "@astrojs/starlight/route-data";
 import config from "virtual:starlight-sidebar-topics-dropdown/config";
 
 import {
-  StarlightSidebarTopicsDropdownLocalsSymbol,
   type StarlightSidebarTopicsDropdownLocals,
+  StarlightSidebarTopicsDropdownLocalsSymbol,
 } from "./libs/locals";
 import { throwPluginError } from "./libs/plugin";
 import {

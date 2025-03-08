@@ -1,4 +1,5 @@
 import { z } from "astro/zod";
+
 export const topicSchema = z.object({
   /**
    * ID of the topic to associate with the current page if the page is not listed in any topic sidebar configuration.

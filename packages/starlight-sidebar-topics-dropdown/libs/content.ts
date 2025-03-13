@@ -1,5 +1,7 @@
 import type { StarlightRouteData } from "@astrojs/starlight/route-data";
+
 import type { TopicFrontmatterSchema } from "../schema";
+
 export function isStarlightEntryWithTopic(
   entry: StarlightEntry
 ): entry is StarlightEntryWithTopic {

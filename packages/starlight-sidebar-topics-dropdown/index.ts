@@ -8,8 +8,8 @@ import {
   type StarlightSidebarTopicsDropdownUserConfig,
 } from "./libs/config";
 import { throwPluginError } from "./libs/plugin";
-import { vitePluginStarlightSidebarTopicsDropdown } from "./libs/vite";
 import { overrideStarlightComponent } from "./libs/starlight";
+import { vitePluginStarlightSidebarTopicsDropdown } from "./libs/vite";
 
 export type {
   StarlightSidebarTopicsDropdownConfig,

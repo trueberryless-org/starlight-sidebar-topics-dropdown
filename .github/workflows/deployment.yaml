@@ -68,7 +68,7 @@ jobs:
         id: changesets
         with:
           version: pnpm run version
-          commit: "chore: release"
+          commit: "[ci] release"
           title: "[ci] release"
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token}}
@@ -78,8 +78,9 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'true'
         run: |
           git checkout changeset-release/main
-          VERSION=$(node -p "require('./docs/package.json').version")
-          git commit --amend -m "chore(release): publish v$VERSION" --no-edit
+          VERSION=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').version")
+          NAME=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').name")
+          git commit --amend -m "[ci] release $NAME v$VERSION" --no-edit
           git push origin changeset-release/main:changeset-release/main --force
 
   image-tag:

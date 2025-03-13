@@ -1,7 +1,7 @@
 import type { StarlightRouteData } from "@astrojs/starlight/route-data";
 
 import type { StarlightSidebarTopicsDropdownSharedConfig } from "./config";
-import { isStarlightEntryWithTopic, type StarlightEntry } from "./content";
+import { type StarlightEntry, isStarlightEntryWithTopic } from "./content";
 import { getLocaleFromSlug, getLocalizedSlug } from "./i18n";
 import { arePathnamesEqual, stripLeadingAndTrailingSlashes } from "./pathname";
 

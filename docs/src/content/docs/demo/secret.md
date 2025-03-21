@@ -6,7 +6,7 @@ pagefind: false
 
 This page is not listed in any topic sidebar configuration but is associated with the "Demo" topic through the `topic: demo` frontmatter entry.
 
-See the [“Unlisted Pages”](/docs/guides/unlisted-pages) guide to learn how to associate content pages with a specific topic.
+See the [“Unlisted Pages”](https://starlight-sidebar-topics.netlify.app/docs/guides/unlisted-pages/) guide to learn how to associate content pages with a specific topic.
 
 :::note
 This page exists solely for demonstration purposes and contains no useful information.

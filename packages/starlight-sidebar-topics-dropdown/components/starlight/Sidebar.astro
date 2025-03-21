@@ -1,0 +1,37 @@
+---
+import {
+  StarlightSidebarTopicsDropdownLocalsSymbol,
+  type StarlightSidebarTopicsDropdownLocals,
+} from "../../libs/locals";
+import Topics from "../Topics.astro";
+const { entry } = Astro.locals.starlightRoute;
+// @ts-expect-error - See `libs/locals` for more information.
+const currentTopic = Astro.locals[
+  StarlightSidebarTopicsDropdownLocalsSymbol
+] as StarlightSidebarTopicsDropdownLocals;
+---
+
+{
+  entry["data"].template !== "splash" && currentTopic && (
+    <Topics current={currentTopic.config} />
+  )
+}
+
+<style is:global>
+  sl-sidebar-state-persist ul.top-level > li:not(:has(details)) {
+    margin-top: 0rem;
+  }
+  sl-sidebar-state-persist ul.top-level > li:has(details) {
+    margin-block: 0.5rem;
+  }
+  /* sl-sidebar-state-persist ul.top-level > li > a {
+		font-size: var(--sl-text-sm);
+	} */
+  sl-sidebar-state-persist ul.top-level > li > a[aria-current="page"] {
+    font-weight: 600;
+  }
+  sl-sidebar-state-persist ul.top-level > li > a[aria-current="false"] {
+    font-weight: 400;
+    color: var(--sl-color-gray-2);
+  }
+</style>

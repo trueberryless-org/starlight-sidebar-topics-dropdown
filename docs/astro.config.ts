@@ -1,12 +1,11 @@
+import node from "@astrojs/node";
 import starlight from "@astrojs/starlight";
-import { defineConfig } from "astro/config";
-import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
-import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins-docs-components";
+import { defineConfig } from "astro/config";
+import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
 import starlightSidebarTopics from "starlight-sidebar-topics";
-
-import node from "@astrojs/node";
+import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 
 export default defineConfig({
   integrations: [

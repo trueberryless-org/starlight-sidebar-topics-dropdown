@@ -24,8 +24,8 @@
   "type": "module",
   "exports": {
     ".": "./index.ts",
-    "./components/Topics.astro": "./components/Topics.astro",
-    "./overrides/Sidebar.astro": "./overrides/Sidebar.astro",
+    "./TopicsDropdown.astro": "./components/TopicsDropdown.astro",
+    "./TopicsDropdownSidebarOverride.astro": "./overrides/Sidebar.astro",
     "./top-level-items.css": "./styles/top-level-items.css",
     "./package.json": "./package.json"
   },

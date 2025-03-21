@@ -5,7 +5,6 @@ import { defineConfig } from "astro/config";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
 import starlightSidebarTopics from "starlight-sidebar-topics";
-import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 
 export default defineConfig({
   integrations: [
@@ -21,8 +20,10 @@ export default defineConfig({
         baseUrl:
           "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/edit/main/docs/",
       },
+      components: {
+        Sidebar: "starlight-sidebar-topics-dropdown/TopicsDropdownSidebarOverride.astro",
+      },
       plugins: [
-        starlightSidebarTopicsDropdown(),
         starlightSidebarTopics([
           {
             label: "Documentation",

@@ -26,7 +26,6 @@
     ".": "./index.ts",
     "./TopicsDropdown.astro": "./components/TopicsDropdown.astro",
     "./TopicsDropdownSidebarOverride.astro": "./overrides/Sidebar.astro",
-    "./top-level-items.css": "./styles/top-level-items.css",
     "./package.json": "./package.json"
   },
   "devDependencies": {

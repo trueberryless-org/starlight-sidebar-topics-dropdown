@@ -3,23 +3,19 @@ title: Getting Started
 description: Learn how to split your documentation into different sections, called topics, each with its own sidebar.
 ---
 
-An opinionated [Starlight](https://starlight.astro.build) plugin to split your documentation into different sections, called topics, each with its own sidebar.
+This package allow you to set up a Starlight website with multiple topics, each with its own sidebar configuration. You can switch between these topics using a **dropdown** in the sidebar. This means that inactive topics are hidden from view. If you prefer seing all topics at once, you can just use the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin instead.
 
-Topics represent either a section of your documentation with its own sidebar configuration or a direct link to a specific URL, such as an external resource.
-Topics are listed above the default Starlight sidebar links and can be used to navigate between different sections of your documentation.
-
-:::tip[See it in action]
-At the top of the sidebar, you can find links to different topics used in this documentation, such as "Documentation" and "Demo" that each have their own sidebar configuration, while the "Starlight Docs" topic is a direct link to the Starlight documentation.
-:::
-
-:::caution
-This plugin originates from [HiDeoo](https://github.com/HiDeoo) but is not affiliated with him. Nonetheless, huge thanks to him for his work on this plugin. We just changed the topic switcher component, the rest is the same. Make sure to check out [the original plugin](https://github.com/HiDeoo/starlight-sidebar-topics).
+:::note
+This package is based on [HiDeoo's Starlight Sidebar Topics](https://github.com/HiDeoo/starlight-sidebar-topics) plugin. Please make sure you install the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin and follow [the getting started guide](https://starlight-sidebar-topics.netlify.app/getting-started) before using this package.
 :::
 
 ## Prerequisites
 
 You will need to have a Starlight website set up.
 If you don't have one yet, you can follow the ["Getting Started"](https://starlight.astro.build/getting-started) guide in the Starlight docs to create one.
+
+Moreover, you will need to have the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin installed and configured correctly.
+If you don't have it yet, you can follow the ["Getting Started"](https://starlight-sidebar-topics.netlify.app/getting-started) guide in the Starlight Sidebar Topics docs to set it up.
 
 ## Installation
 
@@ -28,50 +24,41 @@ import { PackageManagers } from "@hideoo/starlight-plugins-docs-components";
 
 <Steps>
 
-1. Starlight Sidebar Topics Dropdown is a Starlight [plugin](https://starlight.astro.build/reference/plugins/). Install it using your favorite package manager:
+1. Starlight Sidebar Topics Dropdown is a Starlight component which is based on the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin. Install it using your favorite package manager:
 
     <PackageManagers pkg="starlight-sidebar-topics-dropdown" />
 
-2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file by specifying an array of topics each with its own sidebar configuration.
-
-    The following example shows how to configure two new topics named "Guides" and "Reference" linking to the `/guides/` and `/reference/` pages respectively with their own sidebar configuration:
+2. Configure the component override in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#components) in the `astro.config.mjs` file by overriding the `Sidebar` component with the `TopicsDropdownSidebarOverride` component:
 
     ```diff lang="js"
     // astro.config.mjs
     // @ts-check
     import starlight from '@astrojs/starlight'
     import { defineConfig } from 'astro/config'
-    +import starlightSidebarTopicsDropdown from 'starlight-sidebar-topics-dropdown'
+    import starlightSidebarTopics from 'starlight-sidebar-topics'
 
     export default defineConfig({
       integrations: [
         starlight({
-    +      plugins: [
-    +        starlightSidebarTopicsDropdown([
-    +          {
-    +            label: 'Guides',
-    +            link: '/guides/',
-    +            icon: 'open-book',
-    +            items: ['guides/getting-started', 'guides/manual-setup'],
-    +          },
-    +          {
-    +            label: 'Reference',
-    +            link: '/reference/',
-    +            icon: 'information',
-    +            items: ['reference/api', 'reference/components'],
-    +          },
-    +        ]),
-    +      ],
-    -      sidebar: [
-    -        {
-    -          label: 'Guides',
-    -          items: ['guides/getting-started', 'guides/manual-setup'],
-    -        },
-    -        {
-    -          label: 'Reference',
-    -          items: ['reference/api', 'reference/components'],
-    -        },
-    -      ],
+    +      components: {
+    +        Sidebar: "starlight-sidebar-topics-dropdown/TopicsDropdownSidebarOverride.astro",
+    +      },
+          plugins: [
+            starlightSidebarTopics([
+             {
+                label: 'Guides',
+                link: '/guides/',
+                icon: 'open-book',
+                items: ['guides/getting-started', 'guides/manual-setup'],
+              },
+              {
+                label: 'Reference',
+                link: '/reference/',
+                icon: 'information',
+                items: ['reference/api', 'reference/components'],
+              },
+            ]),
+          ],
           title: 'My Docs',
         }),
       ],
@@ -81,23 +68,3 @@ import { PackageManagers } from "@hideoo/starlight-plugins-docs-components";
 3. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to preview the changes.
 
 </Steps>
-
-The Starlight Sidebar Topics Dropdown plugin behavior can be tweaked using various [topic configuration options](/docs/configuration/#topic-configuration).
-
-## Component overrides
-
-The Starlight Sidebar Topics Dropdown plugin uses a Starlight [component override](https://starlight.astro.build/guides/overriding-components/) for the [`Sidebar`](https://starlight.astro.build/reference/overrides/#sidebar) component to add the dropdown which enables choosing between different topics.
-
-If you have a custom `Sidebar` component override in your Starlight project, you will need to manually render the `Sidebar` component from the Starlight Sidebar Topics Dropdown plugin in your custom component:
-
-```diff lang="astro"
----
-// src/components/overrides/Sidebar.astro
-import Default from '@astrojs/starlight/components/Sidebar.astro'
-+import StarlightSidebarTopicsDropdownSidebar from 'starlight-sidebar-topics-dropdown/components/Sidebar.astro'
----
-
-+<StarlightSidebarTopicsDropdownSidebar />
-<p>Custom content in the Sidebar override</p>
-<Default><slot /></Default>
-```

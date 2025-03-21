@@ -33,9 +33,8 @@ export default defineConfig({
             items: [
               {
                 label: "Start Here",
-                items: ["docs/getting-started", "docs/configuration"],
+                items: ["docs/getting-started"],
               },
-              { label: "Guides", autogenerate: { directory: "docs/guides" } },
               {
                 label: "Resources",
                 items: [
@@ -82,21 +81,6 @@ export default defineConfig({
               },
               variant: "caution",
             },
-          },
-          {
-            id: "unnested-sidebar",
-            label: "Unnested Sidebar",
-            link: "/unnested-sidebar/",
-            icon: "right-caret",
-            items: [
-              { slug: "unnested-sidebar" },
-              { slug: "unnested-sidebar/lorem-ipsum" },
-              {
-                label: "Lorem ipsum",
-                items: [{ slug: "unnested-sidebar/group/lorem-ipsum" }],
-              },
-              { slug: "unnested-sidebar/lorem-ipsum-2" },
-            ],
           },
           {
             label: "Starlight Docs",

@@ -4,7 +4,7 @@ import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins
 import { defineConfig } from "astro/config";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
-import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
+import starlightSidebarTopics from "starlight-sidebar-topics";
 
 export default defineConfig({
   integrations: [
@@ -20,8 +20,11 @@ export default defineConfig({
         baseUrl:
           "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/edit/main/docs/",
       },
+      components: {
+        Sidebar: "./src/components/Sidebar.astro",
+      },
       plugins: [
-        starlightSidebarTopicsDropdown([
+        starlightSidebarTopics([
           {
             label: "Documentation",
             link: "/docs/getting-started/",
@@ -29,9 +32,8 @@ export default defineConfig({
             items: [
               {
                 label: "Start Here",
-                items: ["docs/getting-started", "docs/configuration"],
+                items: ["docs/getting-started"],
               },
-              { label: "Guides", autogenerate: { directory: "docs/guides" } },
               {
                 label: "Resources",
                 items: [
@@ -78,21 +80,6 @@ export default defineConfig({
               },
               variant: "caution",
             },
-          },
-          {
-            id: "unnested-sidebar",
-            label: "Unnested Sidebar",
-            link: "/unnested-sidebar/",
-            icon: "right-caret",
-            items: [
-              { slug: "unnested-sidebar" },
-              { slug: "unnested-sidebar/lorem-ipsum" },
-              {
-                label: "Lorem ipsum",
-                items: [{ slug: "unnested-sidebar/group/lorem-ipsum" }],
-              },
-              { slug: "unnested-sidebar/lorem-ipsum-2" },
-            ],
           },
           {
             label: "Starlight Docs",

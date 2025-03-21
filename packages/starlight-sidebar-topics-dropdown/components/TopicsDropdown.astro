@@ -1,46 +1,9 @@
 ---
 import { Badge, Icon } from "@astrojs/starlight/components";
-import { AstroError } from "astro/errors";
 import type { ComponentProps } from "astro/types";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import starlightConfig from "virtual:starlight/user-config";
-import config from "virtual:starlight-sidebar-topics-dropdown/config";
 
-import type { StarlightSidebarTopicsDropdownSharedConfig } from "../libs/config";
-
-interface Props {
-  current: StarlightSidebarTopicsDropdownSharedConfig[number];
-}
-
-const { current } = Astro.props;
-
-const defaultLang =
-  starlightConfig.defaultLocale?.lang ||
-  starlightConfig.defaultLocale?.locale ||
-  "en";
-
-function getTranslation(
-  translations: Record<string, string>,
-  link: string,
-  description: string
-) {
-  const defaultTranslation = translations[defaultLang];
-
-  if (!defaultTranslation) {
-    throw new AstroError(
-      `The ${description} for "${link}" must have a key for the default language "${defaultLang}".`,
-      "Update the Starlight config to include a topic label for the default language."
-    );
-  }
-
-  let translation = defaultTranslation;
-
-  if (Astro.currentLocale) {
-    translation = translations[Astro.currentLocale] ?? defaultTranslation;
-  }
-
-  return translation;
-}
+const { topics } = Astro.locals.starlightSidebarTopics;
+const currentTopic = topics.find((topic) => topic.isCurrent);
 ---
 
 <div class="starlight-sidebar-topics-dropdown-dropdown">
@@ -49,33 +12,23 @@ function getTranslation(
     class="starlight-sidebar-topics-dropdown-button"
   >
     {
-      current.icon && (
+      currentTopic.icon && (
         <div class="starlight-sidebar-topics-dropdown-button-icon">
-          <Icon name={current.icon as ComponentProps<typeof Icon>["name"]} />
+          <Icon
+            name={currentTopic.icon as ComponentProps<typeof Icon>["name"]}
+          />
         </div>
       )
     }
     <span class="starlight-sidebar-topics-dropdown-button-label"
-      >{
-        typeof current.label === "string"
-          ? current.label
-          : getTranslation(current.label, current.link, "topic label")
-      }</span
+      >{currentTopic.label}</span
     >
     {
-      current.badge && (
+      currentTopic.badge && (
         <Badge
           class="starlight-sidebar-topics-dropdown-badge"
-          text={
-            typeof current.badge.text === "string"
-              ? current.badge.text
-              : getTranslation(
-                  current.badge.text,
-                  current.link,
-                  "current badge text"
-                )
-          }
-          variant={current.badge.variant}
+          text={currentTopic.badge.text}
+          variant={currentTopic.badge.variant}
         />
       )
     }
@@ -101,26 +54,13 @@ function getTranslation(
     hidden
   >
     {
-      config.map((topic) => {
-        const isLinkTopic = topic.type === "link";
-        const isCurrent = isLinkTopic
-          ? false
-          : topic.label === current.label && topic.link === current.link;
-        const link =
-          !isLinkTopic && Astro.currentLocale
-            ? getRelativeLocaleUrl(Astro.currentLocale, topic.link)
-            : topic.link;
-        const label =
-          typeof topic.label === "string"
-            ? topic.label
-            : getTranslation(topic.label, topic.link, "topic label");
-
+      topics.map((topic) => {
         return (
           <a
-            href={link}
+            href={topic.link}
             class:list={{
               "starlight-sidebar-topics-dropdown-item": true,
-              "starlight-sidebar-topics-dropdown-current-item": isCurrent,
+              "starlight-sidebar-topics-dropdown-current-item": topic.isCurrent,
             }}
           >
             {topic.icon && (
@@ -130,19 +70,13 @@ function getTranslation(
                 />
               </div>
             )}
-            <span class="starlight-sidebar-topics-dropdown-label">{label}</span>
+            <span class="starlight-sidebar-topics-dropdown-label">
+              {topic.label}
+            </span>
             {topic.badge && (
               <Badge
                 class="starlight-sidebar-topics-dropdown-badge"
-                text={
-                  typeof topic.badge.text === "string"
-                    ? topic.badge.text
-                    : getTranslation(
-                        topic.badge.text,
-                        topic.link,
-                        "topic badge text"
-                      )
-                }
+                text={topic.badge.text}
                 variant={topic.badge.variant}
               />
             )}

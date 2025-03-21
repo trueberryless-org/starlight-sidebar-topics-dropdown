@@ -1,9 +1,7 @@
-import node from "@astrojs/node";
 import starlight from "@astrojs/starlight";
 import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins-docs-components";
 import { defineConfig } from "astro/config";
 import starlightLinksValidator from "starlight-links-validator";
-import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 
 export default defineConfig({
@@ -101,13 +99,6 @@ export default defineConfig({
             ],
           },
         }),
-        starlightPluginShowLatestVersion({
-          source: {
-            type: "npm",
-            slug: "starlight-sidebar-topics-dropdown",
-          },
-          showInSiteTitle: "deferred",
-        }),
       ],
       social: {
         github:
@@ -115,7 +106,4 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: node({
-    mode: "standalone",
-  }),
 });

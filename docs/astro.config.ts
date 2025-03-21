@@ -4,6 +4,7 @@ import starlightSidebarTopicsDropdown from "starlight-sidebar-topics-dropdown";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightPluginsDocsComponents from "@trueberryless-org/starlight-plugins-docs-components";
 import starlightPluginShowLatestVersion from "starlight-plugin-show-latest-version";
+import starlightSidebarTopics from "starlight-sidebar-topics";
 
 import node from "@astrojs/node";
 
@@ -22,7 +23,8 @@ export default defineConfig({
           "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/edit/main/docs/",
       },
       plugins: [
-        starlightSidebarTopicsDropdown([
+        starlightSidebarTopicsDropdown(),
+        starlightSidebarTopics([
           {
             label: "Documentation",
             link: "/docs/getting-started/",

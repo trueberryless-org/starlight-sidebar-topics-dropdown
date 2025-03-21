@@ -30,6 +30,7 @@
     "starlight-contributor-list": "^0.2.1",
     "starlight-links-validator": "^0.14.3",
     "starlight-plugin-show-latest-version": "^0.4.0",
+    "starlight-sidebar-topics": "^0.6.0",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },
   "packageManager": "pnpm@9.6.0",

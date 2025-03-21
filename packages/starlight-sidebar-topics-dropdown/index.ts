@@ -1,4 +1,5 @@
 import type { StarlightPlugin } from "@astrojs/starlight/types";
+
 import { overrideStarlightComponent } from "./libs/starlight";
 
 export default function starlightSidebarTopicsDropdownPlugin(): StarlightPlugin {

@@ -1,5 +1,20 @@
 # starlight-sidebar-topics-dropdown-docs
 
+## 0.4.0
+
+### Minor Changes
+
+- [#40](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/40) [`5401b3f`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/5401b3f1592b7c5e958b1778523f0a7a9f8f86e6) Thanks [@trueberryless](https://github.com/trueberryless)! - Update (and mostly remove) the documentation to match the new "just-a-component" package with the help of [HiDeoo](https://github.com/hideoo).
+
+### Patch Changes
+
+- [#43](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/43) [`762c45d`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/762c45d58cb65ca0d14ca7b1073452112512b44e) Thanks [@trueberryless](https://github.com/trueberryless)! - Ignore bot contributors
+
+- [#42](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/42) [`f2d2b54`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/f2d2b54013fa059c11b4a71af074c2cb27e7f03c) Thanks [@trueberryless](https://github.com/trueberryless)! - Remove version badge and node adapter
+
+- Updated dependencies [[`acf6f15`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/acf6f156d4e8eaa00b2205dbb89befbd5dea27c7)]:
+  - starlight-sidebar-topics-dropdown@0.5.0
+
 ## 0.3.3
 
 ### Patch Changes

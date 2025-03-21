@@ -25,7 +25,6 @@
   "exports": {
     ".": "./index.ts",
     "./TopicsDropdown.astro": "./components/TopicsDropdown.astro",
-    "./TopicsDropdownSidebarOverride.astro": "./overrides/Sidebar.astro",
     "./package.json": "./package.json"
   },
   "devDependencies": {

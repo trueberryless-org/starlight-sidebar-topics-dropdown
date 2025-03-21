@@ -28,29 +28,33 @@
          plugins: [
    -        starlightSidebarTopicsDropdown([
    +        starlightSidebarTopics([
-             {
-               label: 'Guides',
-               link: '/guides/',
-               icon: 'open-book',
-               items: ['guides/getting-started', 'guides/manual-setup'],
-             },
-             {
-               label: 'Reference',
-               link: '/reference/',
-               icon: 'information',
-               items: ['reference/api', 'reference/components'],
-             },
+             // Your Starlight Sidebar Topics configuration here (unchanged).
            ]),
          ],
    +      components: {
-   +        Sidebar: "starlight-sidebar-topics-dropdown/TopicsDropdownSidebarOverride.astro",
+   +        Sidebar: './src/components/Sidebar.astro',
    +      },
        }),
      ],
    });
    ```
 
-4. Update the schema import in `src/content.config.ts`:
+4. Create an Astro component to replace the default Starlight `<Sidebar>` component with which will render the topic list dropdown menu and [re-use the default Starlight sidebar](https://starlight.astro.build/guides/overriding-components/#reuse-a-built-in-component):
+
+   ```astro
+   ---
+   // src/components/Sidebar.astro
+   import Default from '@astrojs/starlight/components/Sidebar.astro';
+   import TopicsDropdown from 'starlight-sidebar-topics-dropdown/TopicsDropdown.astro';
+   ---
+
+   {/* Render the topics dropdown menu. */}
+   <TopicsDropdown />
+   {/* Render the default sidebar. */}
+   <Default><slot /></Default>
+   ```
+
+5. Update the schema import in `src/content.config.ts`:
 
    ```diff lang="ts"
    // src/content.config.ts

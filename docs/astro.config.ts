@@ -21,7 +21,8 @@ export default defineConfig({
           "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/edit/main/docs/",
       },
       components: {
-        Sidebar: "starlight-sidebar-topics-dropdown/TopicsDropdownSidebarOverride.astro",
+        Sidebar:
+          "starlight-sidebar-topics-dropdown/TopicsDropdownSidebarOverride.astro",
       },
       plugins: [
         starlightSidebarTopics([

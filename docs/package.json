@@ -21,7 +21,6 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/node": "^9.1.0",
     "@astrojs/starlight": "^0.32.1",
     "@hideoo/starlight-plugins-docs-components": "^0.4.0",
     "@trueberryless-org/starlight-plugins-docs-components": "^0.4.1",
@@ -29,7 +28,6 @@
     "sharp": "^0.33.5",
     "starlight-contributor-list": "^0.3.0",
     "starlight-links-validator": "^0.14.3",
-    "starlight-plugin-show-latest-version": "^0.4.0",
     "starlight-sidebar-topics": "^0.6.0",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },

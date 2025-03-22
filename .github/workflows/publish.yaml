@@ -74,6 +74,15 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Get published version
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        run: |
+          git checkout changeset-release/main
+          VERSION=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').version")
+          NAME=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').name")
+          git commit --amend -m "[ci] release $NAME v$VERSION" --no-edit
+          git push origin changeset-release/main:changeset-release/main --force
+
   image-tag:
     name: Image Tag
     runs-on: ubuntu-latest

@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: starlight-sidebar-topics-dropdown
+  namespace: starlight-sidebar-topics-dropdown
+spec:
+  secretName: starlight-sidebar-topics-dropdown
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "starlight-sidebar-topics-dropdown.trueberryless.org"

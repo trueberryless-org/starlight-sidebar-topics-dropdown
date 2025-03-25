@@ -10,5 +10,5 @@ See the [“Unlisted Pages”](https://starlight-sidebar-topics.netlify.app/docs
 
 :::note
 This page exists solely for demonstration purposes and contains no useful information.
-See the Starlight Sidebar Topics plugin [documentation](/docs/getting-started/) for more information.
+See the Starlight Sidebar Topics Dropdown component [documentation](/docs/getting-started/) for more information.
 :::

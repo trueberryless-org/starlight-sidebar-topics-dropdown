@@ -12,7 +12,7 @@
      npm i starlight-sidebar-topics
      ```
 
-  2. Update the `starlight-sidebar-topics-dropdown` plugin in your `astro.config.mjs` (use the `starlight-sidebar-topics` plugin instead):
+  2. Update the `starlight-sidebar-topics-dropdown` component in your `astro.config.mjs` (use the `starlight-sidebar-topics` plugin instead):
 
      ```diff lang="js"
      // astro.config.mjs
@@ -20,7 +20,7 @@
      +import starlightSidebarTopics from "starlight-sidebar-topics";
      ```
 
-  3. Exchange the `starlight-sidebar-topics-dropdown` plugin with the `starlight-sidebar-topics` plugin and add a manual override for the `Sidebar` component where you can use the dropdown component from the `starlight-sidebar-topics-dropdown` plugin:
+  3. Exchange the `starlight-sidebar-topics-dropdown` component with the `starlight-sidebar-topics` plugin and add a manual override for the `Sidebar` component where you can use the dropdown component from the `starlight-sidebar-topics-dropdown` component:
 
      ```diff lang="js"
      // astro.config.mjs

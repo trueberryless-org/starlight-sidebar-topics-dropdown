@@ -68,8 +68,8 @@ jobs:
         id: changesets
         uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
-          commit: "[ci] release"
-          title: "[ci] release"
+          commit: "ci: release"
+          title: "ci: release"
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -80,7 +80,7 @@ jobs:
           git checkout changeset-release/main
           VERSION=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').version")
           NAME=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').name")
-          git commit --amend -m "[ci] release $NAME v$VERSION" --no-edit
+          git commit --amend -m "ci: release $NAME v$VERSION" --no-edit
           git push origin changeset-release/main:changeset-release/main --force
 
   image-tag:
@@ -105,7 +105,7 @@ jobs:
         needs.changesets.outputs.hasChangesets == 'false' && 
         (
           contains(github.event.head_commit.message, 'deploy') || 
-          contains(github.event.head_commit.message, '[ci] release')
+          contains(github.event.head_commit.message, 'ci: release')
         )
       ) || 
       github.event_name == 'workflow_dispatch'

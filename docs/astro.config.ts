@@ -100,10 +100,13 @@ export default defineConfig({
           },
         }),
       ],
-      social: {
-        github:
-          "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
+        },
+      ],
     }),
   ],
 });

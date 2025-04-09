@@ -29,7 +29,7 @@
     "astro": "^5.6.1"
   },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.30",
+    "@astrojs/starlight": ">=0.32",
     "starlight-sidebar-topics": ">=0.6"
   },
   "packageManager": "pnpm@9.3.0",

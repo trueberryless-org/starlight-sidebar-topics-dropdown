@@ -10,14 +10,16 @@
     "dropdown"
   ],
   "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
-  "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues",
+  "bugs": {
+    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
     "directory": "packages/starlight-sidebar-topics-dropdown"
   },
   "license": "MIT",
-  "author": "trueberryless (https://trueberryless.org)",
+  "author": "trueberryless <trueberryless@gmail.com> (https://trueberryless.org)",
   "type": "module",
   "exports": {
     ".": "./index.ts",

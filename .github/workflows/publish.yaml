@@ -69,7 +69,7 @@ jobs:
         uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
           commit: "ci: release"
-          title: "ci: release"
+          title: "ci: release [skip netlify]"
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -105,7 +105,7 @@ jobs:
         needs.changesets.outputs.hasChangesets == 'false' && 
         (
           contains(github.event.head_commit.message, 'deploy') || 
-          contains(github.event.head_commit.message, 'ci: release')
+          contains(github.event.head_commit.message, 'release')
         )
       ) || 
       github.event_name == 'workflow_dispatch'

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":disableDependencyDashboard",
+    ":disablePeerDependencies",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":ignoreModulesAndTests",
+    "workarounds:all",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "docker:disable"
+  ],
+  "rangeStrategy": "bump",
+  "ignorePaths": ["**/node_modules/**"],
+  "commitMessageSuffix": "[skip ci]",
+  "packageRules": [
+    {
+      "groupName": "github-actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "separateMajorMinor": true
+    },
+    {
+      "description": "Disable package manager version updates",
+      "matchPackageNames": ["pnpm"],
+      "matchDepTypes": ["packageManager"],
+      "enabled": false
+    }
+  ]
+}

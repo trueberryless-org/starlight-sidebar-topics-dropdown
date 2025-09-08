@@ -25,7 +25,7 @@
     "@hideoo/starlight-plugins-docs-components": "^0.4.0",
     "@trueberryless-org/starlight-plugins-docs-components": "^0.4.1",
     "astro": "^5.6.1",
-    "sharp": "^0.33.5",
+    "sharp": "^0.34.3",
     "starlight-contributor-list": "^0.3.0",
     "starlight-links-validator": "^0.15.0",
     "starlight-sidebar-topics": "^0.6.0",

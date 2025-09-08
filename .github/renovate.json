@@ -18,6 +18,7 @@
       "matchManagers": ["github-actions"]
     },
     {
+      "groupName": "npm-packages",
       "matchManagers": ["npm"],
       "matchDepTypes": ["dependencies", "devDependencies"],
       "separateMajorMinor": true

@@ -1,5 +1,11 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.5.2
+
+### Patch Changes
+
+- [#68](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/68) [`f640d36`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/f640d367a5d622f9061f2524146fb1c49b3a21ae) Thanks [@trueberryless-org](https://github.com/apps/trueberryless-org)! - Setups trusted publishing using OpenID Connect (OIDC) authentication — no code changes.
+
 ## 0.5.1
 
 ### Patch Changes
@@ -11,7 +17,6 @@
 ### Minor Changes
 
 - [#40](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/40) [`acf6f15`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/acf6f156d4e8eaa00b2205dbb89befbd5dea27c7) Thanks [@trueberryless](https://github.com/trueberryless)! - ⚠️ **BREAKING CHANGE:** This plugin now uses the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin as a peer dependency. Please follow the upgrade guide below to migrate to the new version.
-
   1. Install the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin:
 
      ```sh

@@ -11,10 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  REGISTRY: docker.io
-  IMAGE_OWNER: trueberryless
   IMAGE_NAME: starlight-sidebar-topics-dropdown
-  NODE_VERSION: 20
+  NODE_VERSION: 24.10.0
 
 jobs:
   changes:
@@ -24,7 +22,9 @@ jobs:
       starlight-sidebar-topics-dropdown: ${{ steps.filter.outputs.starlight-sidebar-topics-dropdown }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         id: filter
@@ -50,13 +50,15 @@ jobs:
           private_key: ${{ secrets.BOT_PRIVATE_KEY }}
 
       - name: Checkout Repo
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
 
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
@@ -72,7 +74,6 @@ jobs:
           title: "ci: release [skip netlify]"
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get published version
         if: steps.changesets.outputs.hasChangesets == 'true'
@@ -90,7 +91,9 @@ jobs:
       IMAGE_TAG: ${{ env.IMAGE_TAG }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - name: Read version from package.json
         id: get_version
@@ -102,25 +105,27 @@ jobs:
     needs: [changes, changesets, image-tag]
     if: >
       (
-        needs.changesets.outputs.hasChangesets == 'false' && 
+        needs.changesets.outputs.hasChangesets == 'false' &&
         (
-          contains(github.event.head_commit.message, 'deploy') || 
+          contains(github.event.head_commit.message, 'deploy') ||
           contains(github.event.head_commit.message, 'release')
         )
-      ) || 
+      ) ||
       github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
 
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
@@ -131,9 +136,7 @@ jobs:
 
       - run: |
           cd packages/starlight-sidebar-topics-dropdown
-          npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish --access public
 
   release:
     name: Release
@@ -143,7 +146,9 @@ jobs:
       contents: write
     steps:
       - name: Check out the repo
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - id: extract-changelog
         uses: sean0x42/markdown-extract@7b185cbe85263116bbf741e739e7198ba86465dc # v2.1.0

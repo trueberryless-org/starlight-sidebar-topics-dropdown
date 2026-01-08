@@ -12,6 +12,8 @@
   "rangeStrategy": "bump",
   "ignorePaths": ["**/node_modules/**"],
   "commitMessageSuffix": "[skip ci]",
+  "assignees": [],
+  "reviewers": [],
   "packageRules": [
     {
       "groupName": "github-actions",

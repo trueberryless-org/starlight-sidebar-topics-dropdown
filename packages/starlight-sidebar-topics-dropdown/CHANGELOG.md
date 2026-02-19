@@ -1,5 +1,11 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.5.4
+
+### Patch Changes
+
+- [#80](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/80) [`c497245`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/c497245d963d5c4f2e0a1e458860f2ffad836eaf) Thanks [@VisualEhrmanntraut](https://github.com/VisualEhrmanntraut)! - Fixed bug introduced by AI hallucination while trying to add RTL layout support
+
 ## 0.5.3
 
 ### Patch Changes

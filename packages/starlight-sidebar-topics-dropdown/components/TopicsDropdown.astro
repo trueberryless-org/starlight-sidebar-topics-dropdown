@@ -109,10 +109,8 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     --starlight-sidebar-topics-dropdown-gradient-direction: to right;
   }
 
-  html[dir="rtl"] {
-    .starlight-sidebar-topics-dropdown-button {
-      --starlight-sidebar-topics-dropdown-gradient-direction: to left;
-    }
+  :global(html[dir="rtl"]) .starlight-sidebar-topics-dropdown-button {
+    --starlight-sidebar-topics-dropdown-gradient-direction: to left;
   }
 
   .starlight-sidebar-topics-dropdown-button::before {

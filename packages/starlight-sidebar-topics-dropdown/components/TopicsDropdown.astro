@@ -122,7 +122,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     )::before {
     content: "";
     background-image: linear-gradient(
-      to right,
+      to inline-end,
       var(--sl-color-text-accent) calc(1.4rem + 16px + 2px),
       var(--sl-color-gray-5) 0
     );
@@ -132,7 +132,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     .starlight-sidebar-topics-dropdown-button-icon
   ) {
     background: linear-gradient(
-      to right,
+      to inline-end,
       var(--sl-color-text-accent) calc(1.4rem + 16px),
       var(--sl-color-gray-6) 0
     );
@@ -150,7 +150,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
 
   .starlight-sidebar-topics-dropdown-button-label {
     font-weight: 600;
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -161,12 +161,12 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     )
     .starlight-sidebar-topics-dropdown-button-label {
     font-weight: 600;
-    margin-left: 1rem;
+    margin-inline-start: 1rem;
   }
 
   .starlight-sidebar-topics-dropdown-label {
     font-weight: 600;
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -176,11 +176,11 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
       .starlight-sidebar-topics-dropdown-icon
     )
     .starlight-sidebar-topics-dropdown-label {
-    margin-left: 0.5rem;
+    margin-inline-start: 0.5rem;
   }
 
   .starlight-sidebar-topics-dropdown-button > svg {
-    margin-left: auto;
+    margin-inline-start: auto;
     font-size: 1rem;
     color: var(--sl-color-white);
   }
@@ -242,7 +242,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
   }
 
   .starlight-sidebar-topics-dropdown-badge {
-    margin-left: 0.25rem;
+    margin-inline-start: 0.25rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

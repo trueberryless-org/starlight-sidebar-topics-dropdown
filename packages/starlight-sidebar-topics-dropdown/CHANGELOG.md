@@ -1,5 +1,11 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.5.3
+
+### Patch Changes
+
+- [#78](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/78) [`6dd38a5`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/6dd38a566f187f32353eb519a7f0b09b17d84cc5) Thanks [@trueberryless](https://github.com/trueberryless)! - Add support for RTL languages by fixing the CSS styles.
+
 ## 0.5.2
 
 ### Patch Changes

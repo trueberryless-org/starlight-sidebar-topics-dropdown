@@ -21,16 +21,6 @@ export default defineConfig({
       components: {
         Sidebar: "./src/components/Sidebar.astro",
       },
-      locales: {
-        root: {
-          label: "English",
-          lang: "en",
-        },
-        ar: {
-          label: "العربية",
-          dir: "rtl",
-        },
-      },
       plugins: [
         starlightSidebarTopics([
           {

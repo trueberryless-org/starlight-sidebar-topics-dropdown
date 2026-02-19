@@ -23,12 +23,12 @@ export default defineConfig({
       },
       locales: {
         root: {
-          label: 'English',
-          lang: 'en',
+          label: "English",
+          lang: "en",
         },
         ar: {
-          label: 'العربية',
-          dir: 'rtl',
+          label: "العربية",
+          dir: "rtl",
         },
       },
       plugins: [

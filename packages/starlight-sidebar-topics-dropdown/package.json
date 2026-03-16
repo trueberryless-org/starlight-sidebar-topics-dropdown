@@ -9,7 +9,7 @@
     "topics",
     "dropdown"
   ],
-  "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
+  "homepage": "https://starlight-sidebar-topics-dropdown.trueberryless.org/",
   "bugs": {
     "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
   },
@@ -27,16 +27,16 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@astrojs/starlight": "^0.33.0",
-    "astro": "^5.6.1"
+    "@astrojs/starlight": "^0.38.1",
+    "astro": "^6.0.5"
   },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.32",
-    "starlight-sidebar-topics": ">=0.6"
+    "@astrojs/starlight": ">=0.38",
+    "starlight-sidebar-topics": ">=0.7"
   },
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@10.10.0",
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+    "node": ">=22.12.0"
   },
   "publishConfig": {
     "access": "public"

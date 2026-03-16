@@ -1,5 +1,15 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.6.0
+
+### Minor Changes
+
+- [`be6f194`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/be6f1948dd7dbc0c3b55848b99123df045189536) Thanks [@trueberryless](https://github.com/trueberryless)! - Adds support for Astro v6, drops support for Astro v5.
+
+  ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now `0.38.0`.
+
+  Please follow the [upgrade guide](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.38.0) to update your project.
+
 ## 0.5.4
 
 ### Patch Changes

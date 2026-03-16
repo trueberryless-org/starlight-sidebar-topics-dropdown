@@ -32,6 +32,7 @@ jobs:
           gh label delete "invalid" --yes || true
           gh label delete "question" --yes || true
           gh label delete "wontfix" --yes || true
+          gh label delete "🚀 manifest" --yes || true
 
           gh label create "🚨 action" --description "Changes in GitHub workflows or actions" --color "A75AD5" --force
           gh label create "🤖 bot" --description "Automatically generated pull request" --color "0075CA" --force
@@ -45,7 +46,6 @@ jobs:
           gh label create "🆘 help wanted" --description "Extra attention is needed" --color "BFD4F2" --force
           gh label create "🌏 i18n" --description "Updates to internationalized docs, excluding English" --color "006B75" --force
           gh label create "👀 invalid" --description "This doesn't seem right" --color "E4E669" --force
-          gh label create "🚀 manifest" --description "Manifest-related changes" --color "96D3D7" --force
           gh label create "📦 package" --description "Updates in package structure or package.json" --color "F34A37" --force
           gh label create "❓ question" --description "Further information is requested" --color "D876E3" --force
           gh label create "🏯 styles" --description "Stylesheets or design updates" --color "550F5A" --force

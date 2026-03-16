@@ -14,20 +14,17 @@
 
 "✒️ documentation":
   - changed-files:
-      - any-glob-to-any-file: "**/README.md"
+      - any-glob-to-any-file: ["**/docs/**", "**/README.md"]
 
 "🌏 i18n":
   - changed-files:
-      - all-globs-to-any-file: ["**/docs/**", "!**/docs/en/**"]
-
-"🚀 manifest":
-  - changed-files:
-      - any-glob-to-any-file: "manifest*/**"
+      - any-glob-to-any-file:
+          - "**/docs/!(en)/"
+          - "**/docs/[a-z][a-z]-[a-z][a-z]/**"
 
 "📦 package":
   - changed-files:
-      - any-glob-to-any-file: "**/packages/**"
-      - any-glob-to-any-file: "**/package.json"
+      - any-glob-to-any-file: ["**/packages/**", "package.json"]
 
 "🏯 styles":
   - changed-files:

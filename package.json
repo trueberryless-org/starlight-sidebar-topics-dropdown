@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "private": true,
   "description": "Dropdown topic list for the Starlight Sidebar Topics plugin.",
-  "homepage": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown",
+  "homepage": "https://starlight-sidebar-topics-dropdown.trueberryless.org/",
   "bugs": {
     "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
   },
@@ -26,6 +26,6 @@
   },
   "packageManager": "pnpm@10.10.0",
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+    "node": ">=22.12.0"
   }
 }

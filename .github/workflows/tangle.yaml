@@ -1,0 +1,22 @@
+name: Tangle
+
+on:
+  push: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  tangle:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'trueberryless-org'
+    concurrency:
+      group: tangle-mirror-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: gwennlbh/to-tangled@6867d16fd934f3fe27df0a540dbd6375ea88b31c # v0.5
+        with:
+          repo: trueberryless.org/starlight-sidebar-topics-dropdown
+          ssh-key: ${{ secrets.TANGLED_KEY }}

@@ -24,8 +24,8 @@
     "prettier": "3.8.3",
     "prettier-plugin-astro": "0.14.1"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@11.6.0",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.16.0"
   }
 }

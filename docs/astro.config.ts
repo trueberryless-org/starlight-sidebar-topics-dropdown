@@ -60,14 +60,22 @@ export default defineConfig({
             link: "/demo/",
             icon: "puzzle",
             items: [
-              { label: "API", autogenerate: { directory: "demo/api" } },
+              { label: "API",
+                items: [{
+                  autogenerate: { directory: "demo/api" }
+                }],
+              },
               {
                 label: "Components",
-                autogenerate: { directory: "demo/components" },
+                items: [{
+                  autogenerate: { directory: "demo/components" },
+                }],
               },
               {
                 label: "Commands",
-                autogenerate: { directory: "demo/commands" },
+                items: [{
+                  autogenerate: { directory: "demo/commands" },
+                }],
                 collapsed: true,
               },
             ],

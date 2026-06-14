@@ -23,18 +23,18 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.38.1",
+    "@astrojs/starlight": "^0.40.0",
     "@hideoo/starlight-plugins-docs-components": "^0.4.2",
     "@trueberryless-org/starlight-plugins-docs-components": "^0.5.0",
-    "astro": "^6.0.5",
+    "astro": "^6.4.6",
     "astro-contributors": "^0.7.0",
-    "sharp": "^0.34.5",
-    "starlight-links-validator": "^0.20.1",
-    "starlight-sidebar-topics": "^0.7.1",
+    "sharp": "^0.35.1",
+    "starlight-links-validator": "^0.24.1",
+    "starlight-sidebar-topics": "^0.8.0",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@11.6.0+sha512.9a36518224080c6fe5165afdcfe79bfa118c29be703f3f462b1e32efe1e98e47e8750b148e08286250aad4113cc7993ca413c4e2cd447752708c2ee5751bc95f",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.16.0"
   }
 }

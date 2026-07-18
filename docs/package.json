@@ -33,7 +33,7 @@
     "starlight-sidebar-topics": "^0.7.1",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@11.1.2",
   "engines": {
     "node": ">=22.12.0"
   }

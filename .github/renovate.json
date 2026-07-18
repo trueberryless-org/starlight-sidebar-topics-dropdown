@@ -11,9 +11,10 @@
   ],
   "rangeStrategy": "bump",
   "ignorePaths": ["**/node_modules/**"],
-  "commitMessageSuffix": "[skip ci]",
+  "commitMessageSuffix": "[skip netlify]",
   "assignees": [],
   "reviewers": [],
+  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
       "groupName": "github-actions",
@@ -30,6 +31,11 @@
       "matchPackageNames": ["pnpm"],
       "matchDepTypes": ["packageManager"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "minimumReleaseAge": "21 days"
     }
   ]
 }

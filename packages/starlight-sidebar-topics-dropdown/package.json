@@ -27,8 +27,8 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@astrojs/starlight": "^0.38.1",
-    "astro": "^6.0.5"
+    "@astrojs/starlight": "^0.41.1",
+    "astro": "^6.4.8"
   },
   "peerDependencies": {
     "@astrojs/starlight": ">=0.38",

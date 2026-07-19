@@ -12,7 +12,7 @@
     "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git"
   },
   "license": "MIT",
-  "author": "trueberryless <trueberryless@gmail.com> (https://trueberryless.org)",
+  "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",
   "type": "module",
   "scripts": {
     "version": "pnpm changeset version && pnpm i --no-frozen-lockfile"

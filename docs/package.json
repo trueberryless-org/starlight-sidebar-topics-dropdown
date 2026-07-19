@@ -3,7 +3,7 @@
   "version": "0.4.1",
   "private": true,
   "description": "Dropdown topic list for the Starlight Sidebar Topics plugin.",
-  "homepage": "https://starlight-sidebar-topics-dropdown.trueberryless.org",
+  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app/",
   "bugs": {
     "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
   },
@@ -13,7 +13,7 @@
     "directory": "docs"
   },
   "license": "MIT",
-  "author": "trueberryless <trueberryless@gmail.com> (https://trueberryless.org)",
+  "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",
   "type": "module",
   "scripts": {
     "astro": "astro",

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.3/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@4.0.0/schema.json",
   "changelog": [
     "@changesets/changelog-github",
     { "repo": "trueberryless-org/starlight-sidebar-topics-dropdown" }
@@ -8,7 +8,5 @@
   "fixed": [],
   "linked": [],
   "access": "public",
-  "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": ["starlight-sidebar-topics-dropdown-docs"]
+  "updateInternalDependencies": "patch"
 }

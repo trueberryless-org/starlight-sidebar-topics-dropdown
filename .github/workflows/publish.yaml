@@ -22,7 +22,7 @@ jobs:
       starlight-sidebar-topics-dropdown: ${{ steps.filter.outputs.starlight-sidebar-topics-dropdown }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -37,7 +37,7 @@ jobs:
     name: Changesets
     runs-on: ubuntu-latest
     outputs:
-      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
+      has-changesets: ${{ steps.changesets.outputs.has-changesets }}
     permissions:
       contents: write
       pull-requests: write
@@ -50,7 +50,7 @@ jobs:
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
       - name: Checkout Repo
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ steps.generate_token.outputs.token }}
           persist-credentials: true
@@ -59,7 +59,7 @@ jobs:
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
 
       - name: Setup Node
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
@@ -69,15 +69,16 @@ jobs:
 
       - name: Create Release Pull Request
         id: changesets
-        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
+        uses: changesets/action@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         with:
-          commit: "ci: release"
-          title: "ci: release [skip netlify]"
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          version-script: pnpm run version
+          commit-message: "ci: release"
+          pr-title: "ci: release [skip netlify]"
+          github-token: ${{ steps.generate_token.outputs.token}}
+          push-with-git-cli: true
 
       - name: Get published version
-        if: steps.changesets.outputs.hasChangesets == 'true'
+        if: steps.changesets.outputs.has-changesets == 'true'
         run: |
           git checkout changeset-release/main
           VERSION=$(node -p "require('./packages/starlight-sidebar-topics-dropdown/package.json').version")
@@ -92,7 +93,7 @@ jobs:
       IMAGE_TAG: ${{ env.IMAGE_TAG }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -106,7 +107,7 @@ jobs:
     needs: [changes, changesets, image-tag]
     if: >
       (
-        needs.changesets.outputs.hasChangesets == 'false' &&
+        needs.changesets.outputs.has-changesets == 'false' &&
         (
           contains(github.event.head_commit.message, 'deploy') ||
           contains(github.event.head_commit.message, 'release')
@@ -118,7 +119,7 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -126,7 +127,7 @@ jobs:
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
 
       - name: Setup Node
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
@@ -147,7 +148,7 @@ jobs:
       contents: write
     steps:
       - name: Check out the repo
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 

@@ -1,6 +1,6 @@
 {
   "name": "starlight-sidebar-topics-dropdown",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "MIT",
   "description": "Starlight component to display the Starlight Sidebar Topics plugin topic list as a dropdown menu.",
   "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",

@@ -1,5 +1,25 @@
 # starlight-sidebar-topics-dropdown
 
+## 0.7.0
+
+### Minor Changes
+
+- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless) and [@deining](https://github.com/deining)! - Adds support for Astro v7, drops support for Astro v6.
+  
+  ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now `0.42.0` and the minimum supported version of Starlight Sidebar Topics is now `0.9.0`.
+  
+  Please follow the [upgrade guide](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.42.0) to update your project.
+
+### Patch Changes
+
+- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless)! - Adds a readable error message with a hint when the component is used without the [Starlight Sidebar Topics](https://starlight-sidebar-topics.netlify.app/) plugin.
+
+- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless)! - Fixes a build error on pages not associated with any topic, e.g. [excluded pages](https://starlight-sidebar-topics.netlify.app/docs/guides/excluded-pages/). The dropdown menu is no longer rendered on such pages, matching the built-in topic list of the Starlight Sidebar Topics plugin.
+
+- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless)! - Fixes an issue where the [HTML attributes](https://starlight-sidebar-topics.netlify.app/docs/configuration/#attrs) configured for a topic link were not applied to the links in the dropdown menu.
+
+- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless)! - Improves the dropdown menu accessibility by exposing its expanded state to assistive technologies, and fixes an issue where only the first dropdown menu would work when rendering multiple dropdown menus on the same page.
+
 ## 0.6.0
 
 ### Minor Changes

@@ -8,11 +8,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Starlight Sidebar Topics Dropdown",
-      logo: {
-        light: "./src/assets/logo-white.png",
-        dark: "./src/assets/logo-dark.png",
-        replacesTitle: true,
-      },
       customCss: ["./src/styles/custom.css"],
       editLink: {
         baseUrl:
@@ -60,14 +55,17 @@ export default defineConfig({
             link: "/demo/",
             icon: "puzzle",
             items: [
-              { label: "API", autogenerate: { directory: "demo/api" } },
+              {
+                label: "API",
+                items: [{ autogenerate: { directory: "demo/api" } }],
+              },
               {
                 label: "Components",
-                autogenerate: { directory: "demo/components" },
+                items: [{ autogenerate: { directory: "demo/components" } }],
               },
               {
                 label: "Commands",
-                autogenerate: { directory: "demo/commands" },
+                items: [{ autogenerate: { directory: "demo/commands" } }],
                 collapsed: true,
               },
             ],

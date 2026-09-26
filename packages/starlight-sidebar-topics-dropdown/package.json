@@ -1,24 +1,8 @@
 {
   "name": "starlight-sidebar-topics-dropdown",
   "version": "0.6.0",
-  "description": "Dropdown topic list for the Starlight Sidebar Topics plugin.",
-  "keywords": [
-    "starlight",
-    "component",
-    "sidebar",
-    "topics",
-    "dropdown"
-  ],
-  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app/",
-  "bugs": {
-    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
-    "directory": "packages/starlight-sidebar-topics-dropdown"
-  },
   "license": "MIT",
+  "description": "Starlight component to display the Starlight Sidebar Topics plugin topic list as a dropdown menu.",
   "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",
   "type": "module",
   "exports": {
@@ -27,18 +11,36 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@astrojs/starlight": "^0.42.0",
-    "astro": "^6.4.8"
+    "@astrojs/starlight": "^0.42.4",
+    "astro": "^7.3.5",
+    "starlight-sidebar-topics": "^0.9.0"
   },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.38",
-    "starlight-sidebar-topics": ">=0.7"
+    "@astrojs/starlight": ">=0.42.0",
+    "starlight-sidebar-topics": ">=0.9.0"
   },
-  "packageManager": "pnpm@10.10.0",
   "engines": {
-    "node": ">=22.23.2"
+    "node": ">=22.12.0"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "sideEffects": false,
+  "keywords": [
+    "starlight",
+    "component",
+    "sidebar",
+    "topics",
+    "dropdown",
+    "documentation",
+    "astro",
+    "withastro"
+  ],
+  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
+    "directory": "packages/starlight-sidebar-topics-dropdown"
+  },
+  "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
 }

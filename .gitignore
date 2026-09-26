@@ -83,7 +83,7 @@ web_modules/
 .cache
 .parcel-cache
 
-# Astro 
+# Astro
 .astro
 
 # Next.js build output
@@ -133,3 +133,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Netlify
+.netlify

@@ -1,8 +1,8 @@
-# `starlight-sidebar-topics-dropdown`
+# `starlight-sidebar-topics-dropdown-docs`
 
-Dropdown topic list for the Starlight Sidebar Topics plugin.
+Documentation for the Starlight Sidebar Topics Dropdown component, available at [starlight-sidebar-topics-dropdown.netlify.app](https://starlight-sidebar-topics-dropdown.netlify.app).
 
-## Documentation
+## Development
 
 Run the documentation locally by running the following command in your terminal:
 
@@ -10,10 +10,10 @@ Run the documentation locally by running the following command in your terminal:
 pnpm run dev
 ```
 
-Content can be found in the [`src/content/docs/`](./src/content/docs/) directory.
+Content can be found in the [`src/content/docs/`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/tree/main/docs/src/content/docs) directory.
 
 ## License
 
-Licensed under the MIT License, Copyright © trueberryless-org.
+Licensed under the MIT License, Copyright © trueberryless.
 
-See [LICENSE](/LICENSE) for more information.
+See [LICENSE](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/blob/main/LICENSE) for more information.

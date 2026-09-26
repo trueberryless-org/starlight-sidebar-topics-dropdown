@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless)! - Adds support for Astro v7, drops support for Astro v6.
+- [#129](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/pull/129) [`068240b`](https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/commit/068240bb01ce039b48652803fe5f4b15c55b59bc) Thanks [@trueberryless](https://github.com/trueberryless) and [@deining](https://github.com/deining)! - Adds support for Astro v7, drops support for Astro v6.
   
   ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now `0.42.0` and the minimum supported version of Starlight Sidebar Topics is now `0.9.0`.
   

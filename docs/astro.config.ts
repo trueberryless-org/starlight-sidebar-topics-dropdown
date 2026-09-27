@@ -4,10 +4,34 @@ import { defineConfig } from "astro/config";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 
+const site =
+  (process.env.CONTEXT === "deploy-preview" ||
+  process.env.CONTEXT === "branch-deploy"
+    ? process.env.DEPLOY_PRIME_URL
+    : process.env.URL) ??
+  "https://starlight-sidebar-topics-dropdown.netlify.app";
+
 export default defineConfig({
+  site,
   integrations: [
     starlight({
       title: "Starlight Sidebar Topics Dropdown",
+      head: [
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: new URL("og.png", site).href,
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:alt",
+            content: "A dropdown for Starlight Sidebar Topics.",
+          },
+        },
+      ],
       customCss: ["./src/styles/custom.css"],
       editLink: {
         baseUrl:

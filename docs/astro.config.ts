@@ -15,6 +15,7 @@ export default defineConfig({
   site,
   integrations: [
     starlight({
+      credits: true,
       title: "Starlight Sidebar Topics Dropdown",
       head: [
         {
@@ -38,6 +39,7 @@ export default defineConfig({
           "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/edit/main/docs/",
       },
       components: {
+        Footer: "./src/components/Footer.astro",
         Sidebar: "./src/components/Sidebar.astro",
       },
       plugins: [

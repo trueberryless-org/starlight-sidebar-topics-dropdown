@@ -1,9 +1,29 @@
 {
   "name": "starlight-sidebar-topics-dropdown",
   "version": "0.7.0",
-  "license": "MIT",
   "description": "Starlight component to display the Starlight Sidebar Topics plugin topic list as a dropdown menu.",
+  "keywords": [
+    "starlight",
+    "component",
+    "sidebar",
+    "topics",
+    "dropdown",
+    "documentation",
+    "astro",
+    "withastro"
+  ],
+  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
+    "directory": "packages/starlight-sidebar-topics-dropdown"
+  },
+  "license": "MIT",
   "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": "./index.ts",
@@ -24,23 +44,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false,
-  "keywords": [
-    "starlight",
-    "component",
-    "sidebar",
-    "topics",
-    "dropdown",
-    "documentation",
-    "astro",
-    "withastro"
-  ],
-  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
-    "directory": "packages/starlight-sidebar-topics-dropdown"
-  },
-  "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+  }
 }

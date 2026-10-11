@@ -1,10 +1,19 @@
 {
   "name": "starlight-sidebar-topics-dropdown-docs",
   "version": "0.4.1",
-  "license": "MIT",
-  "description": "Documentation for the Starlight Sidebar Topics Dropdown component.",
-  "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",
   "private": true,
+  "description": "Documentation for the Starlight Sidebar Topics Dropdown component.",
+  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
+    "directory": "docs"
+  },
+  "license": "MIT",
+  "author": "trueberryless <trueberryless@gmail.com> (https://felixs.dev)",
   "type": "module",
   "scripts": {
     "astro": "astro",
@@ -24,14 +33,8 @@
     "starlight-sidebar-topics": "^0.9.0",
     "starlight-sidebar-topics-dropdown": "workspace:*"
   },
+  "packageManager": "pnpm@11.28.0",
   "engines": {
     "node": ">=22.12.0"
-  },
-  "homepage": "https://starlight-sidebar-topics-dropdown.netlify.app",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown.git",
-    "directory": "docs"
-  },
-  "bugs": "https://github.com/trueberryless-org/starlight-sidebar-topics-dropdown/issues"
+  }
 }

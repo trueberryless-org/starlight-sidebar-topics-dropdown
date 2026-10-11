@@ -18,16 +18,16 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       '@trivago/prettier-plugin-sort-imports':
-        specifier: ^6.0.2
+        specifier: 6.0.2
         version: 6.0.2(prettier@3.9.9)(supports-color@10.2.2)
       astro:
         specifier: ^7.3.5
         version: 7.3.5(@types/node@25.0.3)(yaml@2.9.0)
       prettier:
-        specifier: ^3.9.9
+        specifier: 3.9.9
         version: 3.9.9
       prettier-plugin-astro:
-        specifier: ^1.1.0
+        specifier: 1.1.0
         version: 1.1.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(prettier@3.9.9)
       typescript:
         specifier: ^6.0.3
@@ -2011,11 +2011,6 @@ packages:
     engines: {node: '>=22.12.0'}
     peerDependencies:
       prettier: ^3.5.3
-
-  prettier@3.9.6:
-    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
-    engines: {node: '>=14'}
-    hasBin: true
 
   prettier@3.9.9:
     resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
@@ -4636,8 +4631,6 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  prettier@3.9.6: {}
-
   prettier@3.9.9: {}
 
   prismjs@1.30.0: {}
@@ -5145,7 +5138,7 @@ snapshots:
       ajv: 8.20.0
       ajv-draft-04: 1.0.0(ajv@8.20.0)
       ajv-i18n: 4.2.0(ajv@8.20.0)
-      prettier: 3.9.6
+      prettier: 3.9.9
       request-light: 0.5.8
       vscode-json-languageservice: 4.1.8
       vscode-languageserver: 9.0.1
